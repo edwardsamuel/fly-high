@@ -1,0 +1,50 @@
+﻿@model FlyHigh.Models.Flight
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Flight</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FromAirport.AirportCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FromAirport.AirportCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ToAirport.AirportCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ToAirport.AirportCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Departure)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Departure)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Duration)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Duration)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BasePrice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BasePrice)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.FlightId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
