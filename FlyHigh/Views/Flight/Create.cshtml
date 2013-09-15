@@ -1,0 +1,67 @@
+﻿@model FlyHigh.Models.Flight
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Flight</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FromAirportId, "FromAirport")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("FromAirportId", String.Empty)
+            @Html.ValidationMessageFor(model => model.FromAirportId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ToAirportId, "ToAirport")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ToAirportId", String.Empty)
+            @Html.ValidationMessageFor(model => model.ToAirportId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Departure)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Departure)
+            @Html.ValidationMessageFor(model => model.Departure)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Duration)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Duration)
+            @Html.ValidationMessageFor(model => model.Duration)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BasePrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BasePrice)
+            @Html.ValidationMessageFor(model => model.BasePrice)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
