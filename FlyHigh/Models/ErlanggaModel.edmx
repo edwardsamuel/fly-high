@@ -1,0 +1,1098 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ErlanggaModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="ErlanggaModelStoreContainer">
+          <EntitySet Name="airport" EntityType="ErlanggaModel.Store.airport" store:Type="Tables" Schema="erlangga" />
+          <EntitySet Name="baggage" EntityType="ErlanggaModel.Store.baggage" store:Type="Tables" Schema="erlangga" />
+          <EntitySet Name="booking" EntityType="ErlanggaModel.Store.booking" store:Type="Tables" Schema="erlangga" />
+          <EntitySet Name="class" EntityType="ErlanggaModel.Store.class" store:Type="Tables" Schema="erlangga" />
+          <EntitySet Name="flight" EntityType="ErlanggaModel.Store.flight" store:Type="Tables" Schema="erlangga" />
+          <EntitySet Name="member" EntityType="ErlanggaModel.Store.member" store:Type="Tables" Schema="erlangga" />
+          <EntitySet Name="pilot" EntityType="ErlanggaModel.Store.pilot" store:Type="Tables" Schema="erlangga" />
+          <EntitySet Name="pilotschedule" EntityType="ErlanggaModel.Store.pilotschedule" store:Type="Tables" store:Schema="erlangga" store:Name="pilotschedule">
+            <DefiningQuery>SELECT
+      `pilotschedule`.`PilotId`, 
+      `pilotschedule`.`ScheduleId`, 
+      `pilotschedule`.`IsHead`
+      FROM `pilotschedule` AS `pilotschedule`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="plane" EntityType="ErlanggaModel.Store.plane" store:Type="Tables" Schema="erlangga" />
+          <EntitySet Name="planeclass" EntityType="ErlanggaModel.Store.planeclass" store:Type="Tables" store:Schema="erlangga" store:Name="planeclass">
+            <DefiningQuery>SELECT
+      `planeclass`.`PlaneId`, 
+      `planeclass`.`ClassId`, 
+      `planeclass`.`MaximumPassengers`, 
+      `planeclass`.`FreeBaggage`
+      FROM `planeclass` AS `planeclass`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="schedule" EntityType="ErlanggaModel.Store.schedule" store:Type="Tables" Schema="erlangga" />
+          <EntitySet Name="steward" EntityType="ErlanggaModel.Store.steward" store:Type="Tables" Schema="erlangga" />
+          <EntitySet Name="stewardschedule" EntityType="ErlanggaModel.Store.stewardschedule" store:Type="Tables" store:Schema="erlangga" store:Name="stewardschedule">
+            <DefiningQuery>SELECT
+      `stewardschedule`.`StewardId`, 
+      `stewardschedule`.`ScheduleId`, 
+      `stewardschedule`.`IsHead`
+      FROM `stewardschedule` AS `stewardschedule`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ticket" EntityType="ErlanggaModel.Store.ticket" store:Type="Tables" Schema="erlangga" />
+          <EntitySet Name="ticketinstance" EntityType="ErlanggaModel.Store.ticketinstance" store:Type="Tables" store:Schema="erlangga" store:Name="ticketinstance">
+            <DefiningQuery>SELECT
+      `ticketinstance`.`TicketId`, 
+      `ticketinstance`.`ScheduleId`, 
+      `ticketinstance`.`ClassId`
+      FROM `ticketinstance` AS `ticketinstance`</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="Baggage_ibfk_1" Association="ErlanggaModel.Store.Baggage_ibfk_1">
+            <End Role="ticket" EntitySet="ticket" />
+            <End Role="baggage" EntitySet="baggage" />
+          </AssociationSet>
+          <AssociationSet Name="Flight_ibfk_1" Association="ErlanggaModel.Store.Flight_ibfk_1">
+            <End Role="airport" EntitySet="airport" />
+            <End Role="flight" EntitySet="flight" />
+          </AssociationSet>
+          <AssociationSet Name="Flight_ibfk_2" Association="ErlanggaModel.Store.Flight_ibfk_2">
+            <End Role="airport" EntitySet="airport" />
+            <End Role="flight" EntitySet="flight" />
+          </AssociationSet>
+          <AssociationSet Name="PilotSchedule_ibfk_1" Association="ErlanggaModel.Store.PilotSchedule_ibfk_1">
+            <End Role="pilot" EntitySet="pilot" />
+            <End Role="pilotschedule" EntitySet="pilotschedule" />
+          </AssociationSet>
+          <AssociationSet Name="PilotSchedule_ibfk_2" Association="ErlanggaModel.Store.PilotSchedule_ibfk_2">
+            <End Role="schedule" EntitySet="schedule" />
+            <End Role="pilotschedule" EntitySet="pilotschedule" />
+          </AssociationSet>
+          <AssociationSet Name="PlaneClass_ibfk_1" Association="ErlanggaModel.Store.PlaneClass_ibfk_1">
+            <End Role="plane" EntitySet="plane" />
+            <End Role="planeclass" EntitySet="planeclass" />
+          </AssociationSet>
+          <AssociationSet Name="PlaneClass_ibfk_2" Association="ErlanggaModel.Store.PlaneClass_ibfk_2">
+            <End Role="class" EntitySet="class" />
+            <End Role="planeclass" EntitySet="planeclass" />
+          </AssociationSet>
+          <AssociationSet Name="Schedule_ibfk_1" Association="ErlanggaModel.Store.Schedule_ibfk_1">
+            <End Role="flight" EntitySet="flight" />
+            <End Role="schedule" EntitySet="schedule" />
+          </AssociationSet>
+          <AssociationSet Name="Schedule_ibfk_2" Association="ErlanggaModel.Store.Schedule_ibfk_2">
+            <End Role="plane" EntitySet="plane" />
+            <End Role="schedule" EntitySet="schedule" />
+          </AssociationSet>
+          <AssociationSet Name="StewardSchedule_ibfk_1" Association="ErlanggaModel.Store.StewardSchedule_ibfk_1">
+            <End Role="steward" EntitySet="steward" />
+            <End Role="stewardschedule" EntitySet="stewardschedule" />
+          </AssociationSet>
+          <AssociationSet Name="StewardSchedule_ibfk_2" Association="ErlanggaModel.Store.StewardSchedule_ibfk_2">
+            <End Role="schedule" EntitySet="schedule" />
+            <End Role="stewardschedule" EntitySet="stewardschedule" />
+          </AssociationSet>
+          <AssociationSet Name="Ticket_ibfk_1" Association="ErlanggaModel.Store.Ticket_ibfk_1">
+            <End Role="member" EntitySet="member" />
+            <End Role="ticket" EntitySet="ticket" />
+          </AssociationSet>
+          <AssociationSet Name="Ticket_ibfk_3" Association="ErlanggaModel.Store.Ticket_ibfk_3">
+            <End Role="booking" EntitySet="booking" />
+            <End Role="ticket" EntitySet="ticket" />
+          </AssociationSet>
+          <AssociationSet Name="TicketInstance_ibfk_1" Association="ErlanggaModel.Store.TicketInstance_ibfk_1">
+            <End Role="ticket" EntitySet="ticket" />
+            <End Role="ticketinstance" EntitySet="ticketinstance" />
+          </AssociationSet>
+          <AssociationSet Name="TicketInstance_ibfk_2" Association="ErlanggaModel.Store.TicketInstance_ibfk_2">
+            <End Role="schedule" EntitySet="schedule" />
+            <End Role="ticketinstance" EntitySet="ticketinstance" />
+          </AssociationSet>
+          <AssociationSet Name="TicketInstance_ibfk_3" Association="ErlanggaModel.Store.TicketInstance_ibfk_3">
+            <End Role="class" EntitySet="class" />
+            <End Role="ticketinstance" EntitySet="ticketinstance" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="airport">
+          <Key>
+            <PropertyRef Name="AirportId" />
+          </Key>
+          <Property Name="AirportId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AirportCode" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="AirportName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="City" Type="varchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="baggage">
+          <Key>
+            <PropertyRef Name="BaggageId" />
+          </Key>
+          <Property Name="BaggageId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TicketId" Type="bigint" Nullable="false" />
+          <Property Name="Weight" Type="double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BookingFirstName" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="BookingLastName" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="BookingIdType" Type="varchar" MaxLength="15" />
+          <Property Name="BookingIdNumber" Type="varchar" MaxLength="30" />
+          <Property Name="BookingTimestamp" Type="timestamp" Nullable="false" />
+        </EntityType>
+        <EntityType Name="class">
+          <Key>
+            <PropertyRef Name="ClassId" />
+          </Key>
+          <Property Name="ClassId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ClassName" Type="varchar" Nullable="false" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="flight">
+          <Key>
+            <PropertyRef Name="FlightId" />
+          </Key>
+          <Property Name="FlightId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FromAirportId" Type="int" Nullable="false" />
+          <Property Name="ToAirportId" Type="int" Nullable="false" />
+          <Property Name="Departure" Type="time" Nullable="false" />
+          <Property Name="Duration" Type="int" Nullable="false" />
+          <Property Name="BasePrice" Type="decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="member">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MemberFirstName" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="MemberLastName" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="MemberIdType" Type="varchar" MaxLength="15" />
+          <Property Name="MemberIdNumber" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="pilot">
+          <Key>
+            <PropertyRef Name="PilotId" />
+          </Key>
+          <Property Name="PilotId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PilotName" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.erlangga.pilotschedule' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="pilotschedule">
+          <Key>
+            <PropertyRef Name="PilotId" />
+            <PropertyRef Name="ScheduleId" />
+            <PropertyRef Name="IsHead" />
+          </Key>
+          <Property Name="PilotId" Type="int" Nullable="false" />
+          <Property Name="ScheduleId" Type="bigint" Nullable="false" />
+          <Property Name="IsHead" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="plane">
+          <Key>
+            <PropertyRef Name="PlaneId" />
+          </Key>
+          <Property Name="PlaneId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PlaneType" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="MaximumWeight" Type="double" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.erlangga.planeclass' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="planeclass">
+          <Key>
+            <PropertyRef Name="PlaneId" />
+            <PropertyRef Name="ClassId" />
+            <PropertyRef Name="MaximumPassengers" />
+          </Key>
+          <Property Name="PlaneId" Type="int" Nullable="false" />
+          <Property Name="ClassId" Type="int" Nullable="false" />
+          <Property Name="MaximumPassengers" Type="int" Nullable="false" />
+          <Property Name="FreeBaggage" Type="double" />
+        </EntityType>
+        <EntityType Name="schedule">
+          <Key>
+            <PropertyRef Name="ScheduleId" />
+          </Key>
+          <Property Name="ScheduleId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FlightId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="PlaneId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="steward">
+          <Key>
+            <PropertyRef Name="StewardId" />
+          </Key>
+          <Property Name="StewardId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StewardName" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.erlangga.stewardschedule' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="stewardschedule">
+          <Key>
+            <PropertyRef Name="StewardId" />
+            <PropertyRef Name="ScheduleId" />
+            <PropertyRef Name="IsHead" />
+          </Key>
+          <Property Name="StewardId" Type="int" Nullable="false" />
+          <Property Name="ScheduleId" Type="bigint" Nullable="false" />
+          <Property Name="IsHead" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ticket">
+          <Key>
+            <PropertyRef Name="TicketId" />
+          </Key>
+          <Property Name="TicketId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BookingId" Type="bigint" Nullable="false" />
+          <Property Name="TicketFirstName" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="TicketLastName" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="TicketIdType" Type="varchar" MaxLength="15" />
+          <Property Name="TicketIdNumber" Type="varchar" MaxLength="30" />
+          <Property Name="MemberId" Type="int" />
+          <Property Name="Price" Type="decimal" Nullable="false" />
+          <Property Name="BaggageCharge" Type="decimal" Nullable="false" />
+          <Property Name="IsInfant" Type="bool" Nullable="false" />
+          <Property Name="CheckIn" Type="timestamp" />
+          <Property Name="SeatNumber" Type="varchar" MaxLength="4" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.erlangga.ticketinstance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ticketinstance">
+          <Key>
+            <PropertyRef Name="TicketId" />
+            <PropertyRef Name="ScheduleId" />
+            <PropertyRef Name="ClassId" />
+          </Key>
+          <Property Name="TicketId" Type="bigint" Nullable="false" />
+          <Property Name="ScheduleId" Type="bigint" Nullable="false" />
+          <Property Name="ClassId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="Baggage_ibfk_1">
+          <End Role="ticket" Type="ErlanggaModel.Store.ticket" Multiplicity="1" />
+          <End Role="baggage" Type="ErlanggaModel.Store.baggage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ticket">
+              <PropertyRef Name="TicketId" />
+            </Principal>
+            <Dependent Role="baggage">
+              <PropertyRef Name="TicketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Flight_ibfk_1">
+          <End Role="airport" Type="ErlanggaModel.Store.airport" Multiplicity="1" />
+          <End Role="flight" Type="ErlanggaModel.Store.flight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="airport">
+              <PropertyRef Name="AirportId" />
+            </Principal>
+            <Dependent Role="flight">
+              <PropertyRef Name="FromAirportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Flight_ibfk_2">
+          <End Role="airport" Type="ErlanggaModel.Store.airport" Multiplicity="1" />
+          <End Role="flight" Type="ErlanggaModel.Store.flight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="airport">
+              <PropertyRef Name="AirportId" />
+            </Principal>
+            <Dependent Role="flight">
+              <PropertyRef Name="ToAirportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PilotSchedule_ibfk_1">
+          <End Role="pilot" Type="ErlanggaModel.Store.pilot" Multiplicity="1" />
+          <End Role="pilotschedule" Type="ErlanggaModel.Store.pilotschedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pilot">
+              <PropertyRef Name="PilotId" />
+            </Principal>
+            <Dependent Role="pilotschedule">
+              <PropertyRef Name="PilotId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PilotSchedule_ibfk_2">
+          <End Role="schedule" Type="ErlanggaModel.Store.schedule" Multiplicity="1" />
+          <End Role="pilotschedule" Type="ErlanggaModel.Store.pilotschedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="schedule">
+              <PropertyRef Name="ScheduleId" />
+            </Principal>
+            <Dependent Role="pilotschedule">
+              <PropertyRef Name="ScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PlaneClass_ibfk_1">
+          <End Role="plane" Type="ErlanggaModel.Store.plane" Multiplicity="1" />
+          <End Role="planeclass" Type="ErlanggaModel.Store.planeclass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="plane">
+              <PropertyRef Name="PlaneId" />
+            </Principal>
+            <Dependent Role="planeclass">
+              <PropertyRef Name="PlaneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PlaneClass_ibfk_2">
+          <End Role="class" Type="ErlanggaModel.Store.class" Multiplicity="1" />
+          <End Role="planeclass" Type="ErlanggaModel.Store.planeclass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="class">
+              <PropertyRef Name="ClassId" />
+            </Principal>
+            <Dependent Role="planeclass">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Schedule_ibfk_1">
+          <End Role="flight" Type="ErlanggaModel.Store.flight" Multiplicity="1" />
+          <End Role="schedule" Type="ErlanggaModel.Store.schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="flight">
+              <PropertyRef Name="FlightId" />
+            </Principal>
+            <Dependent Role="schedule">
+              <PropertyRef Name="FlightId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Schedule_ibfk_2">
+          <End Role="plane" Type="ErlanggaModel.Store.plane" Multiplicity="1" />
+          <End Role="schedule" Type="ErlanggaModel.Store.schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="plane">
+              <PropertyRef Name="PlaneId" />
+            </Principal>
+            <Dependent Role="schedule">
+              <PropertyRef Name="PlaneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StewardSchedule_ibfk_1">
+          <End Role="steward" Type="ErlanggaModel.Store.steward" Multiplicity="1" />
+          <End Role="stewardschedule" Type="ErlanggaModel.Store.stewardschedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="steward">
+              <PropertyRef Name="StewardId" />
+            </Principal>
+            <Dependent Role="stewardschedule">
+              <PropertyRef Name="StewardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StewardSchedule_ibfk_2">
+          <End Role="schedule" Type="ErlanggaModel.Store.schedule" Multiplicity="1" />
+          <End Role="stewardschedule" Type="ErlanggaModel.Store.stewardschedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="schedule">
+              <PropertyRef Name="ScheduleId" />
+            </Principal>
+            <Dependent Role="stewardschedule">
+              <PropertyRef Name="ScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Ticket_ibfk_1">
+          <End Role="member" Type="ErlanggaModel.Store.member" Multiplicity="0..1" />
+          <End Role="ticket" Type="ErlanggaModel.Store.ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="ticket">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Ticket_ibfk_3">
+          <End Role="booking" Type="ErlanggaModel.Store.booking" Multiplicity="1" />
+          <End Role="ticket" Type="ErlanggaModel.Store.ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="booking">
+              <PropertyRef Name="BookingId" />
+            </Principal>
+            <Dependent Role="ticket">
+              <PropertyRef Name="BookingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TicketInstance_ibfk_1">
+          <End Role="ticket" Type="ErlanggaModel.Store.ticket" Multiplicity="1" />
+          <End Role="ticketinstance" Type="ErlanggaModel.Store.ticketinstance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ticket">
+              <PropertyRef Name="TicketId" />
+            </Principal>
+            <Dependent Role="ticketinstance">
+              <PropertyRef Name="TicketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TicketInstance_ibfk_2">
+          <End Role="schedule" Type="ErlanggaModel.Store.schedule" Multiplicity="1" />
+          <End Role="ticketinstance" Type="ErlanggaModel.Store.ticketinstance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="schedule">
+              <PropertyRef Name="ScheduleId" />
+            </Principal>
+            <Dependent Role="ticketinstance">
+              <PropertyRef Name="ScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TicketInstance_ibfk_3">
+          <End Role="class" Type="ErlanggaModel.Store.class" Multiplicity="1" />
+          <End Role="ticketinstance" Type="ErlanggaModel.Store.ticketinstance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="class">
+              <PropertyRef Name="ClassId" />
+            </Principal>
+            <Dependent Role="ticketinstance">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ErlanggaModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ErlanggaEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Airports" EntityType="ErlanggaModel.Airport" />
+          <EntitySet Name="Baggages" EntityType="ErlanggaModel.Baggage" />
+          <EntitySet Name="Bookings" EntityType="ErlanggaModel.Booking" />
+          <EntitySet Name="Classes" EntityType="ErlanggaModel.Class" />
+          <EntitySet Name="Flights" EntityType="ErlanggaModel.Flight" />
+          <EntitySet Name="Members" EntityType="ErlanggaModel.Member" />
+          <EntitySet Name="Pilots" EntityType="ErlanggaModel.Pilot" />
+          <EntitySet Name="Pilotschedules" EntityType="ErlanggaModel.PilotSchedule" />
+          <EntitySet Name="Planes" EntityType="ErlanggaModel.Plane" />
+          <EntitySet Name="PlaneClasses" EntityType="ErlanggaModel.PlaneClass" />
+          <EntitySet Name="Schedules" EntityType="ErlanggaModel.Schedule" />
+          <EntitySet Name="Stewards" EntityType="ErlanggaModel.Steward" />
+          <EntitySet Name="StewardSchedules" EntityType="ErlanggaModel.StewardSchedule" />
+          <EntitySet Name="Tickets" EntityType="ErlanggaModel.Ticket" />
+          <EntitySet Name="TicketInstances" EntityType="ErlanggaModel.TicketInstance" />
+          <AssociationSet Name="Flight_ibfk_1" Association="ErlanggaModel.Flight_ibfk_1">
+            <End Role="airport" EntitySet="Airports" />
+            <End Role="flight" EntitySet="Flights" />
+          </AssociationSet>
+          <AssociationSet Name="Flight_ibfk_2" Association="ErlanggaModel.Flight_ibfk_2">
+            <End Role="airport" EntitySet="Airports" />
+            <End Role="flight" EntitySet="Flights" />
+          </AssociationSet>
+          <AssociationSet Name="Baggage_ibfk_1" Association="ErlanggaModel.Baggage_ibfk_1">
+            <End Role="ticket" EntitySet="Tickets" />
+            <End Role="baggage" EntitySet="Baggages" />
+          </AssociationSet>
+          <AssociationSet Name="Ticket_ibfk_3" Association="ErlanggaModel.Ticket_ibfk_3">
+            <End Role="booking" EntitySet="Bookings" />
+            <End Role="ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="PlaneClass_ibfk_2" Association="ErlanggaModel.PlaneClass_ibfk_2">
+            <End Role="class" EntitySet="Classes" />
+            <End Role="planeclass" EntitySet="PlaneClasses" />
+          </AssociationSet>
+          <AssociationSet Name="TicketInstance_ibfk_3" Association="ErlanggaModel.TicketInstance_ibfk_3">
+            <End Role="class" EntitySet="Classes" />
+            <End Role="ticketinstance" EntitySet="TicketInstances" />
+          </AssociationSet>
+          <AssociationSet Name="Schedule_ibfk_1" Association="ErlanggaModel.Schedule_ibfk_1">
+            <End Role="flight" EntitySet="Flights" />
+            <End Role="schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="Ticket_ibfk_1" Association="ErlanggaModel.Ticket_ibfk_1">
+            <End Role="member" EntitySet="Members" />
+            <End Role="ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="PilotSchedule_ibfk_1" Association="ErlanggaModel.PilotSchedule_ibfk_1">
+            <End Role="pilot" EntitySet="Pilots" />
+            <End Role="pilotschedule" EntitySet="Pilotschedules" />
+          </AssociationSet>
+          <AssociationSet Name="PilotSchedule_ibfk_2" Association="ErlanggaModel.PilotSchedule_ibfk_2">
+            <End Role="schedule" EntitySet="Schedules" />
+            <End Role="pilotschedule" EntitySet="Pilotschedules" />
+          </AssociationSet>
+          <AssociationSet Name="PlaneClass_ibfk_1" Association="ErlanggaModel.PlaneClass_ibfk_1">
+            <End Role="plane" EntitySet="Planes" />
+            <End Role="planeclass" EntitySet="PlaneClasses" />
+          </AssociationSet>
+          <AssociationSet Name="Schedule_ibfk_2" Association="ErlanggaModel.Schedule_ibfk_2">
+            <End Role="plane" EntitySet="Planes" />
+            <End Role="schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="StewardSchedule_ibfk_2" Association="ErlanggaModel.StewardSchedule_ibfk_2">
+            <End Role="schedule" EntitySet="Schedules" />
+            <End Role="stewardschedule" EntitySet="StewardSchedules" />
+          </AssociationSet>
+          <AssociationSet Name="TicketInstance_ibfk_2" Association="ErlanggaModel.TicketInstance_ibfk_2">
+            <End Role="schedule" EntitySet="Schedules" />
+            <End Role="ticketinstance" EntitySet="TicketInstances" />
+          </AssociationSet>
+          <AssociationSet Name="StewardSchedule_ibfk_1" Association="ErlanggaModel.StewardSchedule_ibfk_1">
+            <End Role="steward" EntitySet="Stewards" />
+            <End Role="stewardschedule" EntitySet="StewardSchedules" />
+          </AssociationSet>
+          <AssociationSet Name="TicketInstance_ibfk_1" Association="ErlanggaModel.TicketInstance_ibfk_1">
+            <End Role="ticket" EntitySet="Tickets" />
+            <End Role="ticketinstance" EntitySet="TicketInstances" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Airport">
+          <Key>
+            <PropertyRef Name="AirportId" />
+          </Key>
+          <Property Name="AirportId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AirportCode" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="AirportName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="FromFlights" Relationship="ErlanggaModel.Flight_ibfk_1" FromRole="airport" ToRole="flight" />
+          <NavigationProperty Name="ToFlights" Relationship="ErlanggaModel.Flight_ibfk_2" FromRole="airport" ToRole="flight" />
+        </EntityType>
+        <EntityType Name="Baggage">
+          <Key>
+            <PropertyRef Name="BaggageId" />
+          </Key>
+          <Property Name="BaggageId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TicketId" Type="Int64" Nullable="false" />
+          <Property Name="Weight" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Ticket" Relationship="ErlanggaModel.Baggage_ibfk_1" FromRole="baggage" ToRole="ticket" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingFirstName" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="BookingLastName" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="BookingIdType" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="BookingIdNumber" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="BookingTimestamp" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Tickets" Relationship="ErlanggaModel.Ticket_ibfk_3" FromRole="booking" ToRole="ticket" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ClassId" />
+          </Key>
+          <Property Name="ClassId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassName" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="PlaneClasses" Relationship="ErlanggaModel.PlaneClass_ibfk_2" FromRole="class" ToRole="planeclass" />
+          <NavigationProperty Name="TicketInstances" Relationship="ErlanggaModel.TicketInstance_ibfk_3" FromRole="class" ToRole="ticketinstance" />
+        </EntityType>
+        <EntityType Name="Flight">
+          <Key>
+            <PropertyRef Name="FlightId" />
+          </Key>
+          <Property Name="FlightId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FromAirportId" Type="Int32" Nullable="false" />
+          <Property Name="ToAirportId" Type="Int32" Nullable="false" />
+          <Property Name="Departure" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
+          <Property Name="BasePrice" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+          <NavigationProperty Name="FromAirport" Relationship="ErlanggaModel.Flight_ibfk_1" FromRole="flight" ToRole="airport" />
+          <NavigationProperty Name="ToAirport" Relationship="ErlanggaModel.Flight_ibfk_2" FromRole="flight" ToRole="airport" />
+          <NavigationProperty Name="Schedules" Relationship="ErlanggaModel.Schedule_ibfk_1" FromRole="flight" ToRole="schedule" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberFirstName" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="MemberLastName" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="MemberIdType" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="MemberIdNumber" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Tickets" Relationship="ErlanggaModel.Ticket_ibfk_1" FromRole="member" ToRole="ticket" />
+        </EntityType>
+        <EntityType Name="Pilot">
+          <Key>
+            <PropertyRef Name="PilotId" />
+          </Key>
+          <Property Name="PilotId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="PilotName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="PilotSchedules" Relationship="ErlanggaModel.PilotSchedule_ibfk_1" FromRole="pilot" ToRole="pilotschedule" />
+        </EntityType>
+        <EntityType Name="PilotSchedule">
+          <Key>
+            <PropertyRef Name="PilotId" />
+            <PropertyRef Name="ScheduleId" />
+            <PropertyRef Name="IsHead" />
+          </Key>
+          <Property Name="PilotId" Type="Int32" Nullable="false" />
+          <Property Name="ScheduleId" Type="Int64" Nullable="false" />
+          <Property Name="IsHead" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Pilot" Relationship="ErlanggaModel.PilotSchedule_ibfk_1" FromRole="pilotschedule" ToRole="pilot" />
+          <NavigationProperty Name="Schedule" Relationship="ErlanggaModel.PilotSchedule_ibfk_2" FromRole="pilotschedule" ToRole="schedule" />
+        </EntityType>
+        <EntityType Name="Plane">
+          <Key>
+            <PropertyRef Name="PlaneId" />
+          </Key>
+          <Property Name="PlaneId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="PlaneType" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="MaximumWeight" Type="Double" Nullable="false" />
+          <NavigationProperty Name="PlaneClasses" Relationship="ErlanggaModel.PlaneClass_ibfk_1" FromRole="plane" ToRole="planeclass" />
+          <NavigationProperty Name="Schedules" Relationship="ErlanggaModel.Schedule_ibfk_2" FromRole="plane" ToRole="schedule" />
+        </EntityType>
+        <EntityType Name="PlaneClass">
+          <Key>
+            <PropertyRef Name="PlaneId" />
+            <PropertyRef Name="ClassId" />
+            <PropertyRef Name="MaximumPassengers" />
+          </Key>
+          <Property Name="PlaneId" Type="Int32" Nullable="false" />
+          <Property Name="ClassId" Type="Int32" Nullable="false" />
+          <Property Name="MaximumPassengers" Type="Int32" Nullable="false" />
+          <Property Name="FreeBaggage" Type="Double" />
+          <NavigationProperty Name="Class" Relationship="ErlanggaModel.PlaneClass_ibfk_2" FromRole="planeclass" ToRole="class" />
+          <NavigationProperty Name="Plane" Relationship="ErlanggaModel.PlaneClass_ibfk_1" FromRole="planeclass" ToRole="plane" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ScheduleId" />
+          </Key>
+          <Property Name="ScheduleId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FlightId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PlaneId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Flight" Relationship="ErlanggaModel.Schedule_ibfk_1" FromRole="schedule" ToRole="flight" />
+          <NavigationProperty Name="PilotSchedules" Relationship="ErlanggaModel.PilotSchedule_ibfk_2" FromRole="schedule" ToRole="pilotschedule" />
+          <NavigationProperty Name="Plane" Relationship="ErlanggaModel.Schedule_ibfk_2" FromRole="schedule" ToRole="plane" />
+          <NavigationProperty Name="StewardSchedules" Relationship="ErlanggaModel.StewardSchedule_ibfk_2" FromRole="schedule" ToRole="stewardschedule" />
+          <NavigationProperty Name="TicketInstances" Relationship="ErlanggaModel.TicketInstance_ibfk_2" FromRole="schedule" ToRole="ticketinstance" />
+        </EntityType>
+        <EntityType Name="Steward">
+          <Key>
+            <PropertyRef Name="StewardId" />
+          </Key>
+          <Property Name="StewardId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="StewardName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="StewardSchedules" Relationship="ErlanggaModel.StewardSchedule_ibfk_1" FromRole="steward" ToRole="stewardschedule" />
+        </EntityType>
+        <EntityType Name="StewardSchedule">
+          <Key>
+            <PropertyRef Name="StewardId" />
+            <PropertyRef Name="ScheduleId" />
+            <PropertyRef Name="IsHead" />
+          </Key>
+          <Property Name="StewardId" Type="Int32" Nullable="false" />
+          <Property Name="ScheduleId" Type="Int64" Nullable="false" />
+          <Property Name="IsHead" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Schedule" Relationship="ErlanggaModel.StewardSchedule_ibfk_2" FromRole="stewardschedule" ToRole="schedule" />
+          <NavigationProperty Name="Steward" Relationship="ErlanggaModel.StewardSchedule_ibfk_1" FromRole="stewardschedule" ToRole="steward" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="TicketId" />
+          </Key>
+          <Property Name="TicketId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingId" Type="Int64" Nullable="false" />
+          <Property Name="TicketFirstName" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="TicketLastName" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="TicketIdType" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="TicketIdNumber" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="MemberId" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+          <Property Name="BaggageCharge" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+          <Property Name="IsInfant" Type="Boolean" Nullable="false" />
+          <Property Name="CheckIn" Type="DateTime" Precision="0" />
+          <Property Name="SeatNumber" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Baggages" Relationship="ErlanggaModel.Baggage_ibfk_1" FromRole="ticket" ToRole="baggage" />
+          <NavigationProperty Name="Booking" Relationship="ErlanggaModel.Ticket_ibfk_3" FromRole="ticket" ToRole="booking" />
+          <NavigationProperty Name="Member" Relationship="ErlanggaModel.Ticket_ibfk_1" FromRole="ticket" ToRole="member" />
+          <NavigationProperty Name="TicketInstances" Relationship="ErlanggaModel.TicketInstance_ibfk_1" FromRole="ticket" ToRole="ticketinstance" />
+        </EntityType>
+        <EntityType Name="TicketInstance">
+          <Key>
+            <PropertyRef Name="TicketId" />
+            <PropertyRef Name="ScheduleId" />
+            <PropertyRef Name="ClassId" />
+          </Key>
+          <Property Name="TicketId" Type="Int64" Nullable="false" />
+          <Property Name="ScheduleId" Type="Int64" Nullable="false" />
+          <Property Name="ClassId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Class" Relationship="ErlanggaModel.TicketInstance_ibfk_3" FromRole="ticketinstance" ToRole="class" />
+          <NavigationProperty Name="Schedule" Relationship="ErlanggaModel.TicketInstance_ibfk_2" FromRole="ticketinstance" ToRole="schedule" />
+          <NavigationProperty Name="Ticket" Relationship="ErlanggaModel.TicketInstance_ibfk_1" FromRole="ticketinstance" ToRole="ticket" />
+        </EntityType>
+        <Association Name="Flight_ibfk_1">
+          <End Role="airport" Type="ErlanggaModel.Airport" Multiplicity="1" />
+          <End Role="flight" Type="ErlanggaModel.Flight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="airport">
+              <PropertyRef Name="AirportId" />
+            </Principal>
+            <Dependent Role="flight">
+              <PropertyRef Name="FromAirportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Flight_ibfk_2">
+          <End Role="airport" Type="ErlanggaModel.Airport" Multiplicity="1" />
+          <End Role="flight" Type="ErlanggaModel.Flight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="airport">
+              <PropertyRef Name="AirportId" />
+            </Principal>
+            <Dependent Role="flight">
+              <PropertyRef Name="ToAirportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Baggage_ibfk_1">
+          <End Role="ticket" Type="ErlanggaModel.Ticket" Multiplicity="1" />
+          <End Role="baggage" Type="ErlanggaModel.Baggage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ticket">
+              <PropertyRef Name="TicketId" />
+            </Principal>
+            <Dependent Role="baggage">
+              <PropertyRef Name="TicketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Ticket_ibfk_3">
+          <End Role="booking" Type="ErlanggaModel.Booking" Multiplicity="1" />
+          <End Role="ticket" Type="ErlanggaModel.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="booking">
+              <PropertyRef Name="BookingId" />
+            </Principal>
+            <Dependent Role="ticket">
+              <PropertyRef Name="BookingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PlaneClass_ibfk_2">
+          <End Role="class" Type="ErlanggaModel.Class" Multiplicity="1" />
+          <End Role="planeclass" Type="ErlanggaModel.PlaneClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="class">
+              <PropertyRef Name="ClassId" />
+            </Principal>
+            <Dependent Role="planeclass">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TicketInstance_ibfk_3">
+          <End Role="class" Type="ErlanggaModel.Class" Multiplicity="1" />
+          <End Role="ticketinstance" Type="ErlanggaModel.TicketInstance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="class">
+              <PropertyRef Name="ClassId" />
+            </Principal>
+            <Dependent Role="ticketinstance">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Schedule_ibfk_1">
+          <End Role="flight" Type="ErlanggaModel.Flight" Multiplicity="1" />
+          <End Role="schedule" Type="ErlanggaModel.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="flight">
+              <PropertyRef Name="FlightId" />
+            </Principal>
+            <Dependent Role="schedule">
+              <PropertyRef Name="FlightId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Ticket_ibfk_1">
+          <End Role="member" Type="ErlanggaModel.Member" Multiplicity="0..1" />
+          <End Role="ticket" Type="ErlanggaModel.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="MemberId" />
+            </Principal>
+            <Dependent Role="ticket">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PilotSchedule_ibfk_1">
+          <End Role="pilot" Type="ErlanggaModel.Pilot" Multiplicity="1" />
+          <End Role="pilotschedule" Type="ErlanggaModel.PilotSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pilot">
+              <PropertyRef Name="PilotId" />
+            </Principal>
+            <Dependent Role="pilotschedule">
+              <PropertyRef Name="PilotId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PilotSchedule_ibfk_2">
+          <End Role="schedule" Type="ErlanggaModel.Schedule" Multiplicity="1" />
+          <End Role="pilotschedule" Type="ErlanggaModel.PilotSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="schedule">
+              <PropertyRef Name="ScheduleId" />
+            </Principal>
+            <Dependent Role="pilotschedule">
+              <PropertyRef Name="ScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PlaneClass_ibfk_1">
+          <End Role="plane" Type="ErlanggaModel.Plane" Multiplicity="1" />
+          <End Role="planeclass" Type="ErlanggaModel.PlaneClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="plane">
+              <PropertyRef Name="PlaneId" />
+            </Principal>
+            <Dependent Role="planeclass">
+              <PropertyRef Name="PlaneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Schedule_ibfk_2">
+          <End Role="plane" Type="ErlanggaModel.Plane" Multiplicity="1" />
+          <End Role="schedule" Type="ErlanggaModel.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="plane">
+              <PropertyRef Name="PlaneId" />
+            </Principal>
+            <Dependent Role="schedule">
+              <PropertyRef Name="PlaneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StewardSchedule_ibfk_2">
+          <End Role="schedule" Type="ErlanggaModel.Schedule" Multiplicity="1" />
+          <End Role="stewardschedule" Type="ErlanggaModel.StewardSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="schedule">
+              <PropertyRef Name="ScheduleId" />
+            </Principal>
+            <Dependent Role="stewardschedule">
+              <PropertyRef Name="ScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TicketInstance_ibfk_2">
+          <End Role="schedule" Type="ErlanggaModel.Schedule" Multiplicity="1" />
+          <End Role="ticketinstance" Type="ErlanggaModel.TicketInstance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="schedule">
+              <PropertyRef Name="ScheduleId" />
+            </Principal>
+            <Dependent Role="ticketinstance">
+              <PropertyRef Name="ScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StewardSchedule_ibfk_1">
+          <End Role="steward" Type="ErlanggaModel.Steward" Multiplicity="1" />
+          <End Role="stewardschedule" Type="ErlanggaModel.StewardSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="steward">
+              <PropertyRef Name="StewardId" />
+            </Principal>
+            <Dependent Role="stewardschedule">
+              <PropertyRef Name="StewardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TicketInstance_ibfk_1">
+          <End Role="ticket" Type="ErlanggaModel.Ticket" Multiplicity="1" />
+          <End Role="ticketinstance" Type="ErlanggaModel.TicketInstance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ticket">
+              <PropertyRef Name="TicketId" />
+            </Principal>
+            <Dependent Role="ticketinstance">
+              <PropertyRef Name="TicketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ErlanggaModelStoreContainer" CdmEntityContainer="ErlanggaEntities">
+          <EntitySetMapping Name="Airports">
+            <EntityTypeMapping TypeName="ErlanggaModel.Airport">
+              <MappingFragment StoreEntitySet="airport">
+                <ScalarProperty Name="AirportId" ColumnName="AirportId" />
+                <ScalarProperty Name="AirportCode" ColumnName="AirportCode" />
+                <ScalarProperty Name="AirportName" ColumnName="AirportName" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Baggages">
+            <EntityTypeMapping TypeName="ErlanggaModel.Baggage">
+              <MappingFragment StoreEntitySet="baggage">
+                <ScalarProperty Name="BaggageId" ColumnName="BaggageId" />
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="ErlanggaModel.Booking">
+              <MappingFragment StoreEntitySet="booking">
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="BookingFirstName" ColumnName="BookingFirstName" />
+                <ScalarProperty Name="BookingLastName" ColumnName="BookingLastName" />
+                <ScalarProperty Name="BookingIdType" ColumnName="BookingIdType" />
+                <ScalarProperty Name="BookingIdNumber" ColumnName="BookingIdNumber" />
+                <ScalarProperty Name="BookingTimestamp" ColumnName="BookingTimestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="ErlanggaModel.Class">
+              <MappingFragment StoreEntitySet="class">
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flights">
+            <EntityTypeMapping TypeName="ErlanggaModel.Flight">
+              <MappingFragment StoreEntitySet="flight">
+                <ScalarProperty Name="FlightId" ColumnName="FlightId" />
+                <ScalarProperty Name="FromAirportId" ColumnName="FromAirportId" />
+                <ScalarProperty Name="ToAirportId" ColumnName="ToAirportId" />
+                <ScalarProperty Name="Departure" ColumnName="Departure" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="ErlanggaModel.Member">
+              <MappingFragment StoreEntitySet="member">
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="MemberFirstName" ColumnName="MemberFirstName" />
+                <ScalarProperty Name="MemberLastName" ColumnName="MemberLastName" />
+                <ScalarProperty Name="MemberIdType" ColumnName="MemberIdType" />
+                <ScalarProperty Name="MemberIdNumber" ColumnName="MemberIdNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pilots">
+            <EntityTypeMapping TypeName="ErlanggaModel.Pilot">
+              <MappingFragment StoreEntitySet="pilot">
+                <ScalarProperty Name="PilotId" ColumnName="PilotId" />
+                <ScalarProperty Name="PilotName" ColumnName="PilotName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pilotschedules">
+            <EntityTypeMapping TypeName="ErlanggaModel.PilotSchedule">
+              <MappingFragment StoreEntitySet="pilotschedule">
+                <ScalarProperty Name="PilotId" ColumnName="PilotId" />
+                <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+                <ScalarProperty Name="IsHead" ColumnName="IsHead" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Planes">
+            <EntityTypeMapping TypeName="ErlanggaModel.Plane">
+              <MappingFragment StoreEntitySet="plane">
+                <ScalarProperty Name="PlaneId" ColumnName="PlaneId" />
+                <ScalarProperty Name="PlaneType" ColumnName="PlaneType" />
+                <ScalarProperty Name="MaximumWeight" ColumnName="MaximumWeight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlaneClasses">
+            <EntityTypeMapping TypeName="ErlanggaModel.PlaneClass">
+              <MappingFragment StoreEntitySet="planeclass">
+                <ScalarProperty Name="PlaneId" ColumnName="PlaneId" />
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+                <ScalarProperty Name="MaximumPassengers" ColumnName="MaximumPassengers" />
+                <ScalarProperty Name="FreeBaggage" ColumnName="FreeBaggage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedules">
+            <EntityTypeMapping TypeName="ErlanggaModel.Schedule">
+              <MappingFragment StoreEntitySet="schedule">
+                <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+                <ScalarProperty Name="FlightId" ColumnName="FlightId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="PlaneId" ColumnName="PlaneId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stewards">
+            <EntityTypeMapping TypeName="ErlanggaModel.Steward">
+              <MappingFragment StoreEntitySet="steward">
+                <ScalarProperty Name="StewardId" ColumnName="StewardId" />
+                <ScalarProperty Name="StewardName" ColumnName="StewardName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StewardSchedules">
+            <EntityTypeMapping TypeName="ErlanggaModel.StewardSchedule">
+              <MappingFragment StoreEntitySet="stewardschedule">
+                <ScalarProperty Name="StewardId" ColumnName="StewardId" />
+                <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+                <ScalarProperty Name="IsHead" ColumnName="IsHead" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="ErlanggaModel.Ticket">
+              <MappingFragment StoreEntitySet="ticket">
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="TicketFirstName" ColumnName="TicketFirstName" />
+                <ScalarProperty Name="TicketLastName" ColumnName="TicketLastName" />
+                <ScalarProperty Name="TicketIdType" ColumnName="TicketIdType" />
+                <ScalarProperty Name="TicketIdNumber" ColumnName="TicketIdNumber" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="BaggageCharge" ColumnName="BaggageCharge" />
+                <ScalarProperty Name="IsInfant" ColumnName="IsInfant" />
+                <ScalarProperty Name="CheckIn" ColumnName="CheckIn" />
+                <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TicketInstances">
+            <EntityTypeMapping TypeName="ErlanggaModel.TicketInstance">
+              <MappingFragment StoreEntitySet="ticketinstance">
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+                <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
