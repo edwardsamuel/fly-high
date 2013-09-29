@@ -14,6 +14,7 @@ namespace FlyHigh.Models
     
     public partial class TicketInstance
     {
+        public int TicketInstanceId { get; set; }
         public long TicketId { get; set; }
         public long ScheduleId { get; set; }
         public int ClassId { get; set; }

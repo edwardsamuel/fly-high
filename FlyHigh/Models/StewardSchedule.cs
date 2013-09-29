@@ -14,6 +14,7 @@ namespace FlyHigh.Models
     
     public partial class StewardSchedule
     {
+        public int StewardScheduleId { get; set; }
         public int StewardId { get; set; }
         public long ScheduleId { get; set; }
         public bool IsHead { get; set; }

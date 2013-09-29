@@ -180,64 +180,64 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Airport.cs">
-      <DependentUpon>ErlanggaModel.tt</DependentUpon>
+      <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Baggage.cs">
-      <DependentUpon>ErlanggaModel.tt</DependentUpon>
+      <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Booking.cs">
-      <DependentUpon>ErlanggaModel.tt</DependentUpon>
+      <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Class.cs">
-      <DependentUpon>ErlanggaModel.tt</DependentUpon>
+      <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ErlanggaModel.Context.cs">
+    <Compile Include="Models\Erlangga.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ErlanggaModel.Context.tt</DependentUpon>
+      <DependentUpon>Erlangga.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ErlanggaModel.cs">
+    <Compile Include="Models\Erlangga.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ErlanggaModel.tt</DependentUpon>
+      <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ErlanggaModel.Designer.cs">
+    <Compile Include="Models\Erlangga.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ErlanggaModel.edmx</DependentUpon>
+      <DependentUpon>Erlangga.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Flight.cs">
-      <DependentUpon>ErlanggaModel.tt</DependentUpon>
+      <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Member.cs">
-      <DependentUpon>ErlanggaModel.tt</DependentUpon>
+      <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Pilot.cs">
-      <DependentUpon>ErlanggaModel.tt</DependentUpon>
+      <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PilotSchedule.cs">
-      <DependentUpon>ErlanggaModel.tt</DependentUpon>
+      <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Plane.cs">
-      <DependentUpon>ErlanggaModel.tt</DependentUpon>
+      <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PlaneClass.cs">
-      <DependentUpon>ErlanggaModel.tt</DependentUpon>
+      <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Schedule.cs">
-      <DependentUpon>ErlanggaModel.tt</DependentUpon>
+      <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Steward.cs">
-      <DependentUpon>ErlanggaModel.tt</DependentUpon>
+      <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StewardSchedule.cs">
-      <DependentUpon>ErlanggaModel.tt</DependentUpon>
+      <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ticket.cs">
-      <DependentUpon>ErlanggaModel.tt</DependentUpon>
+      <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TicketInstance.cs">
-      <DependentUpon>ErlanggaModel.tt</DependentUpon>
+      <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -298,22 +298,22 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <EntityDeploy Include="Models\ErlanggaModel.edmx">
+    <EntityDeploy Include="Models\Erlangga.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ErlanggaModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Erlangga.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ErlanggaModel.Context.tt">
+    <Content Include="Models\Erlangga.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ErlanggaModel.edmx</DependentUpon>
-      <LastGenOutput>ErlanggaModel.Context.cs</LastGenOutput>
+      <DependentUpon>Erlangga.edmx</DependentUpon>
+      <LastGenOutput>Erlangga.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ErlanggaModel.edmx.diagram">
-      <DependentUpon>ErlanggaModel.edmx</DependentUpon>
+    <Content Include="Models\Erlangga.edmx.diagram">
+      <DependentUpon>Erlangga.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\ErlanggaModel.tt">
+    <Content Include="Models\Erlangga.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ErlanggaModel.edmx</DependentUpon>
-      <LastGenOutput>ErlanggaModel.cs</LastGenOutput>
+      <DependentUpon>Erlangga.edmx</DependentUpon>
+      <LastGenOutput>Erlangga.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />

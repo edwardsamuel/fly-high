@@ -14,6 +14,7 @@ namespace FlyHigh.Models
     
     public partial class PlaneClass
     {
+        public int PlaneClassId { get; set; }
         public int PlaneId { get; set; }
         public int ClassId { get; set; }
         public int MaximumPassengers { get; set; }
