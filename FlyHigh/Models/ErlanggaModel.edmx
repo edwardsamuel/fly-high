@@ -473,7 +473,7 @@
           <EntitySet Name="Flights" EntityType="ErlanggaModel.Flight" />
           <EntitySet Name="Members" EntityType="ErlanggaModel.Member" />
           <EntitySet Name="Pilots" EntityType="ErlanggaModel.Pilot" />
-          <EntitySet Name="Pilotschedules" EntityType="ErlanggaModel.PilotSchedule" />
+          <EntitySet Name="PilotSchedules" EntityType="ErlanggaModel.PilotSchedule" />
           <EntitySet Name="Planes" EntityType="ErlanggaModel.Plane" />
           <EntitySet Name="PlaneClasses" EntityType="ErlanggaModel.PlaneClass" />
           <EntitySet Name="Schedules" EntityType="ErlanggaModel.Schedule" />
@@ -515,11 +515,11 @@
           </AssociationSet>
           <AssociationSet Name="PilotSchedule_ibfk_1" Association="ErlanggaModel.PilotSchedule_ibfk_1">
             <End Role="pilot" EntitySet="Pilots" />
-            <End Role="pilotschedule" EntitySet="Pilotschedules" />
+            <End Role="pilotschedule" EntitySet="PilotSchedules" />
           </AssociationSet>
           <AssociationSet Name="PilotSchedule_ibfk_2" Association="ErlanggaModel.PilotSchedule_ibfk_2">
             <End Role="schedule" EntitySet="Schedules" />
-            <End Role="pilotschedule" EntitySet="Pilotschedules" />
+            <End Role="pilotschedule" EntitySet="PilotSchedules" />
           </AssociationSet>
           <AssociationSet Name="PlaneClass_ibfk_1" Association="ErlanggaModel.PlaneClass_ibfk_1">
             <End Role="plane" EntitySet="Planes" />
@@ -991,7 +991,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Pilotschedules">
+          <EntitySetMapping Name="PilotSchedules">
             <EntityTypeMapping TypeName="ErlanggaModel.PilotSchedule">
               <MappingFragment StoreEntitySet="pilotschedule">
                 <ScalarProperty Name="PilotId" ColumnName="PilotId" />

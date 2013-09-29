@@ -11,10 +11,14 @@ namespace FlyHigh.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     
     public partial class PilotSchedule
     {
+        [Key, Column(Order = 0)]
         public int PilotId { get; set; }
+        [Key, Column(Order = 1)]
         public long ScheduleId { get; set; }
         public bool IsHead { get; set; }
     

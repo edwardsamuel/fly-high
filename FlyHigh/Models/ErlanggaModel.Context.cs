@@ -32,7 +32,7 @@ namespace FlyHigh.Models
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Member> Members { get; set; }
         public DbSet<Pilot> Pilots { get; set; }
-        public DbSet<PilotSchedule> Pilotschedules { get; set; }
+        public DbSet<PilotSchedule> PilotSchedules { get; set; }
         public DbSet<Plane> Planes { get; set; }
         public DbSet<PlaneClass> PlaneClasses { get; set; }
         public DbSet<Schedule> Schedules { get; set; }

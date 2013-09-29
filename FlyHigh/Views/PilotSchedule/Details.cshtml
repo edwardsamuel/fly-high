@@ -1,0 +1,36 @@
+﻿@model FlyHigh.Models.PilotSchedule
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>PilotSchedule</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Pilot.PilotName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Pilot.PilotName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Schedule.ScheduleId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Schedule.ScheduleId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsHead)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsHead)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
