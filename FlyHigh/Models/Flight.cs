@@ -11,7 +11,6 @@ namespace FlyHigh.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class Flight
     {
@@ -19,20 +18,16 @@ namespace FlyHigh.Models
         {
             this.Schedules = new HashSet<Schedule>();
         }
-
+    
         public int FlightId { get; set; }
         public int FromAirportId { get; set; }
         public int ToAirportId { get; set; }
         public System.TimeSpan Departure { get; set; }
         public int Duration { get; set; }
         public decimal BasePrice { get; set; }
-
-        [Display(Name = "From Airport")]
+    
         public virtual Airport FromAirport { get; set; }
-
-        [Display(Name = "To Airport")]
         public virtual Airport ToAirport { get; set; }
-
         public virtual ICollection<Schedule> Schedules { get; set; }
     }
 }
