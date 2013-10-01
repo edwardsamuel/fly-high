@@ -42,7 +42,9 @@ namespace FlyHigh.Controllers
         {
             ViewBag.PilotId = new SelectList(db.Pilots, "PilotId", "PilotName");
             ViewBag.ScheduleId = new SelectList(db.Schedules, "ScheduleId", "ScheduleId");
+            SelectList s = new SelectList(db.Pilots, "PilotId", "PilotName");
             return View();
+            
         }
 
         //

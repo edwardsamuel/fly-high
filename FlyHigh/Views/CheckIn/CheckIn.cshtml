@@ -1,0 +1,63 @@
+﻿@model FlyHigh.Models.Booking
+
+@{
+    ViewBag.Title = "Check In";
+}
+<h2>CheckIn</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Flight</legend>
+
+        @Html.HiddenFor(model => model.BookingId)
+
+         <div class="display-label">
+            @Html.DisplayNameFor(model => model.BookingIdType)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.BookingIdType)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.BookingIdNumber)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.BookingIdNumber)
+        </div>
+
+       <div class="display-label">
+            @Html.DisplayNameFor(model => model.BookingFirstName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.BookingFirstName)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.BookingTimestamp)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.BookingTimestamp)
+        </div>
+
+        @foreach (var item in Model.Tickets)
+        {
+            <div>
+                @Html.CheckBox("checkin")
+                @Html.DisplayFor(modelItem => item.TicketFirstName)
+                @Html.DisplayFor(modelItem => item.TicketLastName)
+            </div>
+        }
+
+        @*<div class="editor-field">
+            @Html.DropDownList("FromAirportId", String.Empty)
+            @Html.ValidationMessageFor(model => model.FromAirportId)
+        </div>*@
+
+        <p>
+            <input type="submit" value="Check In" />
+        </p>
+    </fieldset>
+}

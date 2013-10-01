@@ -169,6 +169,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CheckInController.cs" />
     <Compile Include="Controllers\FlightController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PilotController.cs" />
@@ -391,6 +392,8 @@
     <Content Include="Views\PilotSchedule\Create.cshtml" />
     <Content Include="Views\PilotSchedule\Edit.cshtml" />
     <Content Include="Views\PilotSchedule\Delete.cshtml" />
+    <Content Include="Views\CheckIn\Index.cshtml" />
+    <Content Include="Views\CheckIn\CheckIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
