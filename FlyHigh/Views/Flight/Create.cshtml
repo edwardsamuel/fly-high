@@ -6,26 +6,24 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm(new { role = "form", @class = "form-horizontal" }))
+{
     @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>Flight</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.FromAirportId, "FromAirport")
+    
+        <div class="form-group">
+            @Html.LabelFor(model => model.FromAirportId, "From Airport", new { @class="col-lg-2 control-label" })
+            <div class="col-lg-10">
+                @Html.DropDownList("FromAirportId", (IEnumerable<SelectListItem>) ViewBag.FromAirportId, new { @class="form-control" })
+                @Html.ValidationMessageFor(model => model.FromAirportId)
+            </div>
         </div>
-        <div class="editor-field">
-            @Html.DropDownList("FromAirportId", String.Empty)
-            @Html.ValidationMessageFor(model => model.FromAirportId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ToAirportId, "ToAirport")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("ToAirportId", String.Empty)
-            @Html.ValidationMessageFor(model => model.ToAirportId)
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.ToAirportId, "To Airport", new { @class="col-lg-2 control-label" })
+            <div class="col-lg-10">
+                @Html.DropDownList("ToAirportId", (IEnumerable<SelectListItem>) ViewBag.ToAirportId, new { @class="form-control" })
+                @Html.ValidationMessageFor(model => model.ToAirportId)
+            </div>
         </div>
 
         <div class="editor-label">
@@ -55,7 +53,6 @@
         <p>
             <input type="submit" value="Create" />
         </p>
-    </fieldset>
 }
 
 <div>
