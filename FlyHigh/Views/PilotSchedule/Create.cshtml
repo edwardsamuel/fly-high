@@ -14,19 +14,19 @@
         <legend>PilotSchedule</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.PilotId, "Pilot")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("PilotId", String.Empty)
-            @Html.ValidationMessageFor(model => model.PilotId)
-        </div>
-
-        <div class="editor-label">
             @Html.LabelFor(model => model.ScheduleId, "Schedule")
         </div>
         <div class="editor-field">
             @Html.DropDownList("ScheduleId", String.Empty)
             @Html.ValidationMessageFor(model => model.ScheduleId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PilotId, "Pilot")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PilotId", String.Empty)
+            @Html.ValidationMessageFor(model => model.PilotId)
         </div>
 
         <div class="editor-label">
