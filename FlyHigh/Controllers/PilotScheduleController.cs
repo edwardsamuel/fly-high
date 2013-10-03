@@ -13,6 +13,51 @@ namespace FlyHigh.Controllers
     {
         private ErlanggaEntities db = new ErlanggaEntities();
 
+        // Begin Ikmal
+        public List<Schedule> GetSchedule()
+        {
+            var x = db.Schedules;
+            return x.ToList();
+        }
+
+        public ActionResult GetPilots(string id = "")
+        {
+            //select pilotname
+            //from pilot left join pilotschedule
+            //on pilot.pilotid = pilotschedule.pilotid
+            //where
+            //scheduleid=8
+            var pilots = db.Pilots;
+            var pilotschedules = db.PilotSchedules;
+
+            var result =
+                from pilot in pilots
+                join pilotschedule in pilotschedules
+                on pilot.PilotId equals pilotschedule.PilotId
+                into res
+                from r in res.DefaultIfEmpty()
+                select new
+                {
+                    PilotName = pilot.PilotName,
+                    ScheduleId = pilotschedule.ScheduleId
+                };
+
+            var finalresult =
+                result.Where(ps => ps.
+
+            return this.Json(x, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Create()
+        {
+            //ViewBag.PilotId = new SelectList(db.Pilots, "PilotId", "PilotName");
+            ViewBag.ScheduleId = new SelectList(db.Schedules, "ScheduleId", "ScheduleId");
+            SelectList s = new SelectList(db.Pilots, "PilotId", "PilotName");
+            return View();
+
+        }
+        // End Ikmal
+
         //
         // GET: /PilotSchedule/
 
@@ -38,14 +83,14 @@ namespace FlyHigh.Controllers
         //
         // GET: /PilotSchedule/Create
 
-        public ActionResult Create()
-        {
-            ViewBag.PilotId = new SelectList(db.Pilots, "PilotId", "PilotName");
-            ViewBag.ScheduleId = new SelectList(db.Schedules, "ScheduleId", "ScheduleId");
-            SelectList s = new SelectList(db.Pilots, "PilotId", "PilotName");
-            return View();
-            
-        }
+        //public ActionResult Create()
+        //{
+        //    ViewBag.PilotId = new SelectList(db.Pilots, "PilotId", "PilotName");
+        //    ViewBag.ScheduleId = new SelectList(db.Schedules, "ScheduleId", "ScheduleId");
+        //    SelectList s = new SelectList(db.Pilots, "PilotId", "PilotName");
+        //    return View();
+
+        //}
 
         //
         // POST: /PilotSchedule/Create
