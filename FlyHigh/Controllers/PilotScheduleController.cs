@@ -20,7 +20,7 @@ namespace FlyHigh.Controllers
             return x.ToList();
         }
 
-        public ActionResult GetPilots(string id = "")
+        public ActionResult GetPilots(int id = 0)
         {
             //select pilotname
             //from pilot left join pilotschedule
@@ -32,20 +32,16 @@ namespace FlyHigh.Controllers
 
             var result =
                 from pilot in pilots
-                join pilotschedule in pilotschedules
-                on pilot.PilotId equals pilotschedule.PilotId
-                into res
-                from r in res.DefaultIfEmpty()
+                join pilotschedule in pilotschedules.Where(x => x.ScheduleId == id)
+                on pilot.PilotId equals pilotschedule.PilotId into res
+                where !res.Any()
                 select new
                 {
-                    PilotName = pilot.PilotName,
-                    ScheduleId = pilotschedule.ScheduleId
+                    pilot.PilotName,
+                    pilot.PilotId
                 };
 
-            var finalresult =
-                result.Where(ps => ps.
-
-            return this.Json(x, JsonRequestBehavior.AllowGet);
+            return this.Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Create()

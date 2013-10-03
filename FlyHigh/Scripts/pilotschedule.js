@@ -7,7 +7,7 @@ ko.applyBindings(objVM);
 
 function FetchPilots() {
     var ScheduleId = $("#ScheduleId").val();
-    $.getJSON("/Home/GetPilots/" + ScheduleId, null, function (data) {
+    $.getJSON("/PilotSchedule/GetPilots/" + ScheduleId, null, function (data) {
         objVM.pilots(data);
     });
 }
