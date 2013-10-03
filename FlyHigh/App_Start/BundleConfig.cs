@@ -9,7 +9,10 @@ namespace FlyHigh
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/pilotschedule").Include(
-                "~/Scripts/pilotschedule.js", "~/Scripts/knockout-*"));
+                "~/Scripts/pilotschedule.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
+                "~/Scripts/knockout-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.js"));
