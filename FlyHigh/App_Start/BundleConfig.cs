@@ -11,6 +11,9 @@ namespace FlyHigh
             bundles.Add(new ScriptBundle("~/bundles/pilotschedule").Include(
                 "~/Scripts/pilotschedule.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/stewardschedule").Include(
+                "~/Scripts/stewardschedule.js")); 
+            
             bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
                 "~/Scripts/knockout-*"));
 

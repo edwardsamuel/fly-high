@@ -1,0 +1,53 @@
+﻿@model FlyHigh.Models.StewardSchedule
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>StewardSchedule</legend>
+
+        @Html.HiddenFor(model => model.StewardScheduleId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StewardId, "Steward")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("StewardId", String.Empty)
+            @Html.ValidationMessageFor(model => model.StewardId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ScheduleId, "Schedule")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ScheduleId", String.Empty)
+            @Html.ValidationMessageFor(model => model.ScheduleId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsHead)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsHead)
+            @Html.ValidationMessageFor(model => model.IsHead)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

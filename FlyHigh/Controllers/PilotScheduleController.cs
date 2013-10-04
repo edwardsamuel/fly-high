@@ -13,20 +13,14 @@ namespace FlyHigh.Controllers
     {
         private ErlanggaEntities db = new ErlanggaEntities();
 
-        // Begin Ikmal
-        public List<Schedule> GetSchedule()
-        {
-            var x = db.Schedules;
-            return x.ToList();
-        }
-
         public ActionResult GetPilots(int id = 0)
         {
             //select pilotname
             //from pilot left join pilotschedule
             //on pilot.pilotid = pilotschedule.pilotid
-            //where
-            //scheduleid=8
+            //and scheduleid=8
+            //where scheduleid is null
+
             var pilots = db.Pilots;
             var pilotschedules = db.PilotSchedules;
 
@@ -43,16 +37,6 @@ namespace FlyHigh.Controllers
 
             return this.Json(result, JsonRequestBehavior.AllowGet);
         }
-
-        public ActionResult Create()
-        {
-            //ViewBag.PilotId = new SelectList(db.Pilots, "PilotId", "PilotName");
-            ViewBag.ScheduleId = new SelectList(db.Schedules, "ScheduleId", "ScheduleId");
-            SelectList s = new SelectList(db.Pilots, "PilotId", "PilotName");
-            return View();
-
-        }
-        // End Ikmal
 
         //
         // GET: /PilotSchedule/
@@ -79,14 +63,12 @@ namespace FlyHigh.Controllers
         //
         // GET: /PilotSchedule/Create
 
-        //public ActionResult Create()
-        //{
-        //    ViewBag.PilotId = new SelectList(db.Pilots, "PilotId", "PilotName");
-        //    ViewBag.ScheduleId = new SelectList(db.Schedules, "ScheduleId", "ScheduleId");
-        //    SelectList s = new SelectList(db.Pilots, "PilotId", "PilotName");
-        //    return View();
-
-        //}
+        public ActionResult Create()
+        {
+            ViewBag.ScheduleId = new SelectList(db.Schedules, "ScheduleId", "ScheduleId");
+            SelectList s = new SelectList(db.Pilots, "PilotId", "PilotName");
+            return View();
+        }
 
         //
         // POST: /PilotSchedule/Create
