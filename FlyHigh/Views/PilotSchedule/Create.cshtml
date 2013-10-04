@@ -7,27 +7,33 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>PilotSchedule</legend>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.ScheduleId, "Schedule")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ScheduleId", ViewBag.ScheduleId as SelectList, "Select...", new { onchange = "FetchPilots();" })
+            @*@Html.ValidationMessageFor(model => model.ScheduleId)*@
+        </div>
+
+        <p data-bind="visible: pilots().length > 0">
+            <b>Pilot</b>
+            <select data-bind="options: pilots, optionsText: 'PilotName', optionsValue: 'PilotId', optionsCaption: 'Select...'"></select>
+        </p>
+
+        @*<div class="editor-label">
             @Html.LabelFor(model => model.PilotId, "Pilot")
         </div>
         <div class="editor-field">
             @Html.DropDownList("PilotId", String.Empty)
             @Html.ValidationMessageFor(model => model.PilotId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ScheduleId, "Schedule")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("ScheduleId", String.Empty)
-            @Html.ValidationMessageFor(model => model.ScheduleId)
-        </div>
+        </div>*@
 
         <div class="editor-label">
             @Html.LabelFor(model => model.IsHead)
@@ -49,4 +55,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/pilotschedule")
 }
