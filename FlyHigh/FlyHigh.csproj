@@ -189,6 +189,7 @@
     <Compile Include="Models\Booking.cs">
       <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CheckListAttribute.cs" />
     <Compile Include="Models\Class.cs">
       <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
@@ -210,6 +211,7 @@
     <Compile Include="Models\Flight.cs">
       <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CheckInModel.cs" />
     <Compile Include="Models\Member.cs">
       <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
@@ -400,6 +402,8 @@
     <Content Include="Views\PilotSchedule\Delete.cshtml" />
     <Content Include="Views\CheckIn\Index.cshtml" />
     <Content Include="Views\CheckIn\CheckIn.cshtml" />
+    <Content Include="Views\CheckIn\FormResult.cshtml" />
+    <Content Include="Views\CheckIn\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
