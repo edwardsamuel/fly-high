@@ -11,7 +11,7 @@ namespace FlyHigh.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Schedule
     {
         public Schedule()
@@ -20,7 +20,7 @@ namespace FlyHigh.Models
             this.StewardSchedules = new HashSet<StewardSchedule>();
             this.TicketInstances = new HashSet<TicketInstance>();
         }
-    
+
         public long ScheduleId { get; set; }
         public int FlightId { get; set; }
         public System.DateTime Date { get; set; }

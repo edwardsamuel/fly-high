@@ -1,55 +1,100 @@
-﻿@model FlyHigh.Models.Booking
+﻿@model FlyHigh.Models.CheckInModel
 
 @{
     ViewBag.Title = "Check In";
 }
 <h2>CheckIn</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("CheckIn", "CheckIn", FormMethod.Post))
 {
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>Flight</legend>
 
-        @Html.HiddenFor(model => model.BookingId)
+        @Html.HiddenFor(model => model.booking.BookingId)
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.booking.BookingIdType)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.booking.BookingIdType)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.booking.BookingIdNumber)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.booking.BookingIdNumber)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.booking.BookingFirstName)
+                </th>
+                <td>@Html.DisplayFor(model => model.booking.BookingFirstName)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.booking.BookingTimestamp)
+                </th>
+                <td>@Html.DisplayFor(model => model.booking.BookingTimestamp)
+                </td>
+            </tr>
+            <tr>
+                <th>Peserta
+                </th>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>Nama
+                </th>
+                <th>Id Type
+                </th>
+                <th>Id Number
+                </th>
+                <th>Infant
+                </th>
+            </tr>
 
-         <div class="display-label">
-            @Html.DisplayNameFor(model => model.BookingIdType)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.BookingIdType)
-        </div>
+            @foreach (var item in Model.booking.Tickets)
+            {
+                string checkin = item.CheckIn == null ?"":"checked";
+                <tr>
+                    <td>
+                        <input name="DynamicMultiBoxes"  id="Dynamic @item.TicketId" type="checkbox" value="@item.TicketId" @checkin />
+                        <label for="Dynamic @item.TicketId">
+                            @Html.DisplayFor(modelItem => item.TicketFirstName)
+                            @Html.DisplayFor(modelItem => item.TicketLastName)
+                        </label>
+                    </td>
+                    @* <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TicketIdNumber)
+                    </td>*@
+                    <td>
+                        @{if (item.IsInfant == false)
+                          {
+                            @Html.Display("Dewasa");
+                          }
+                          else
+                          {
+                            @Html.Display("Infant");
 
-        <div class="display-label">
-            @Html.DisplayNameFor(model => model.BookingIdNumber)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.BookingIdNumber)
-        </div>
+                          }
+                        }
+                    </td>
+                </tr>
+            }
 
-       <div class="display-label">
-            @Html.DisplayNameFor(model => model.BookingFirstName)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.BookingFirstName)
-        </div>
+        </table>
 
-        <div class="display-label">
-            @Html.DisplayNameFor(model => model.BookingTimestamp)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.BookingTimestamp)
-        </div>
 
-        @foreach (var item in Model.Tickets)
-        {
-            <div>
-                @Html.CheckBox("checkin")
-                @Html.DisplayFor(modelItem => item.TicketFirstName)
-                @Html.DisplayFor(modelItem => item.TicketLastName)
-            </div>
-        }
 
         @*<div class="editor-field">
             @Html.DropDownList("FromAirportId", String.Empty)

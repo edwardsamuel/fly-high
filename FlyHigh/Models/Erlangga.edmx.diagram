@@ -19,7 +19,7 @@
         <EntityTypeShape EntityType="ErlanggaModel.Steward" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="ErlanggaModel.StewardSchedule" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ErlanggaModel.Ticket" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
-        <EntityTypeShape EntityType="ErlanggaModel.TicketInstance" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ErlanggaModel.TicketInstance" Width="1.5" PointX="8.25" PointY="8.375" IsExpanded="true" />
         <AssociationConnector Association="ErlanggaModel.Flight_ibfk_1" ManuallyRouted="false" />
         <AssociationConnector Association="ErlanggaModel.Flight_ibfk_2" ManuallyRouted="false" />
         <AssociationConnector Association="ErlanggaModel.Baggage_ibfk_1" ManuallyRouted="false" />
