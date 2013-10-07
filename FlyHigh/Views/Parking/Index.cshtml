@@ -1,0 +1,50 @@
+﻿@model IEnumerable<FlyHigh.Models.Schedule>
+
+@{
+    ViewBag.Title = "Parking";
+}
+
+<h2>Parking</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayName("FromAirport")
+        </th>
+        <th>
+            @Html.DisplayName("ToAirport")
+        </th>
+        <th>
+            @Html.DisplayName("Departure")
+        </th>
+        <th>
+            @Html.DisplayName("Arrival")
+        </th>
+        <th>
+            @Html.DisplayName("ParkingDuration")
+        </th>
+        <th></th>
+    </tr>
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Flight.FromAirport.AirportCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Flight.ToAirport.AirportCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArrivalTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParkingDuration)
+        </td>
+    </tr>
+}
+
+</table>

@@ -172,6 +172,7 @@
     <Compile Include="Controllers\CheckInController.cs" />
     <Compile Include="Controllers\FlightController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ParkingController.cs" />
     <Compile Include="Controllers\PilotController.cs" />
     <Compile Include="Controllers\PilotScheduleController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
@@ -213,6 +214,7 @@
     <Compile Include="Models\Member.cs">
       <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ParkingItem.cs" />
     <Compile Include="Models\Pilot.cs">
       <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
@@ -400,6 +402,7 @@
     <Content Include="Views\PilotSchedule\Delete.cshtml" />
     <Content Include="Views\CheckIn\Index.cshtml" />
     <Content Include="Views\CheckIn\CheckIn.cshtml" />
+    <Content Include="Views\Parking\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
