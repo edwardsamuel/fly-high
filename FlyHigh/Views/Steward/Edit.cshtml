@@ -1,0 +1,37 @@
+﻿@model FlyHigh.Models.Steward
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Steward</legend>
+
+        @Html.HiddenFor(model => model.StewardId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StewardName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StewardName)
+            @Html.ValidationMessageFor(model => model.StewardName)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
