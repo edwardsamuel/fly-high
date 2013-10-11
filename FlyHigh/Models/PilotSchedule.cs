@@ -11,14 +11,14 @@ namespace FlyHigh.Models
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class PilotSchedule
     {
         public int PilotScheduleId { get; set; }
         public int PilotId { get; set; }
         public long ScheduleId { get; set; }
         public bool IsHead { get; set; }
-
+    
         public virtual Pilot Pilot { get; set; }
         public virtual Schedule Schedule { get; set; }
     }

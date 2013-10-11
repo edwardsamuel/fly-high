@@ -1,0 +1,66 @@
+﻿@model List<FlyHigh.Models.Ticket>
+
+@{
+    ViewBag.Title = "Baggage";
+}
+
+<h2>Baggage</h2>
+
+
+
+@using (Html.BeginForm("Success", "CheckIn", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Flight</legend>
+
+        <table>
+            <tr>
+                <th>Nama
+                </th>
+                <th>Total Weight
+                </th>
+                <th>Baggage Charge
+                </th>
+                <th>Bagasi
+                </th>
+            </tr>
+            @{decimal totalcharge = 0;}
+
+            @foreach (var ticket in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => ticket.TicketFirstName)
+                        @Html.DisplayFor(modelItem => ticket.TicketLastName)
+                    </td>
+                    <td>
+                        @{
+                            double totalWeight = 0;
+                            foreach (var weight in ticket.Baggages)
+                            {
+                                totalWeight += weight.Weight;
+                            }
+                        }
+                        @totalWeight
+                    </td>
+                    <td>
+                       @{totalcharge += ticket.BaggageCharge;}
+                        @ticket.BaggageCharge
+                    </td>
+                    <td>
+                        @Html.ActionLink("Add Baggage", "AddBaggage", new { id = ticket.TicketId })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        Total Charge: @totalcharge 
+
+        <p>
+            <input type="submit" value="Finish" />
+        </p>
+
+    </fieldset>
+}

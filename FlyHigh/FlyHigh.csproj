@@ -405,6 +405,8 @@
     <Content Include="Views\CheckIn\CheckIn.cshtml" />
     <Content Include="Views\CheckIn\FormResult.cshtml" />
     <Content Include="Views\CheckIn\Success.cshtml" />
+    <Content Include="Views\CheckIn\AddBaggage.cshtml" />
+    <Content Include="Views\CheckIn\Baggage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

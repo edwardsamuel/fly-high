@@ -1,0 +1,35 @@
+﻿@model FlyHigh.Models.Baggage
+
+@{
+    ViewBag.Title = "AddBaggage";
+}
+
+<h2>AddBaggage</h2>
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.TicketId)
+<table>
+    <tr>
+        <th>
+            Baggage
+        </th>
+        <th>
+            Weight
+        </th>
+    </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Weight)
+            </td>
+        </tr>
+    
+</table>
+
+<input type="submit" value="Submit" />
+} 

@@ -11,7 +11,28 @@ namespace FlyHigh.Controllers
 {
     public class CheckInController : Controller
     {
+        private static double BAGGAGE_CHARGE_MULTIPLIER = 50000;
+        private static double MAX_WEIGHT_PER_PERSON = 20;
+
         private ErlanggaEntities db = new ErlanggaEntities();
+
+        [HttpPost]
+        public ActionResult Index(int id = 0)
+        {
+            var booking = db.Bookings.Include(ps => ps.Tickets).Where(ps => ps.BookingId == id).FirstOrDefault();
+
+            CheckInModel fm = new CheckInModel();
+            fm.booking = booking;
+
+            if (booking == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View("CheckIn", fm);
+            }
+        }
 
         //
         // GET: /CheckIn/
@@ -21,46 +42,7 @@ namespace FlyHigh.Controllers
             return View();
         }
 
-        //
-        // GET: /CheckIn/CheckIn/5
 
-        //public ActionResult CheckIn(int id = 0)
-        //{
-        //    var booking = db.Bookings.Include(ps => ps.Tickets).Where(ps => ps.BookingId == id).FirstOrDefault();
-        //    if (booking == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(booking);
-        //}
-
-        //
-        // POST: /CheckIn/CheckIn/5
-
-        [HttpPost]
-        public ActionResult Index(int id = 0, string lastName = "", string departure = "")
-        {
-            var airport = db.Airports.Where(ps => ps.AirportName == departure).FirstOrDefault();
-            var booking = db.Bookings.Include(ps => ps.Tickets).Where(ps => ps.BookingId == id && ps.BookingLastName == lastName).FirstOrDefault();
-            
-            CheckInModel fm = new CheckInModel();
-            fm.booking = booking;
-
-            if (booking == null)
-            {
-                return HttpNotFound();
-            }
-            else if (airport != null && booking.Tickets.FirstOrDefault().TicketInstances.FirstOrDefault().Schedule.Flight.FromAirport.AirportId == airport.AirportId)
-            {
-                return View("CheckIn", fm);
-            }
-            else
-            {
-                return HttpNotFound();
-            }
-            
-            //return RedirectToActionPermanent("CheckIn", booking);
-        }
 
         [HttpPost]
         public ActionResult CheckIn(CheckInModel model)
@@ -73,32 +55,69 @@ namespace FlyHigh.Controllers
                     ticketToUpdate.CheckIn = DateTime.Now;
                     db.Entry(ticketToUpdate).State = EntityState.Modified;
                     db.SaveChanges();
-                    // Model.DynamicTableRows.FirstOrDefault(m=>m.ID == i).Name <br />
                 }
             }
+            var tickets = db.Tickets.Include(ps => ps.Booking).Where(ps => ps.BookingId == model.booking.BookingId && ps.CheckIn != null).ToList();
+            //model.booking.Tickets = (ICollection<Ticket>)tickets;
+            return View("Baggage", tickets);
+        }
 
-            //if (ModelState.IsValid)
-            //    return View("FormResult", model);
-            //else
-                return View("Success");
+        //
+        // GET: /CheckIn/AddBaggage/5
 
-            //foreach (var item in checkin)
-            //{
+        public ActionResult AddBaggage(int id = 0)
+        {
+            Baggage baggage = new Baggage() { TicketId = id };
+            return View("AddBaggage", baggage);
+        }
 
-            //    try
-            //    {
+        //
+        // POST: /CheckIn/AddBaggage/5
 
-            //        int a;
+        [HttpPost]
+        public ActionResult AddBaggage(Baggage baggageToAdd)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Baggages.Add(baggageToAdd);
+                db.SaveChanges();
 
-            //    }
-            //    catch (Exception err)
-            //    {
+                double totalWeight = 0;
+                var baggages = db.Baggages.Where(ps => ps.TicketId == baggageToAdd.TicketId).ToList();
+                foreach (var baggage in baggages)
+                {
+                    totalWeight += baggage.Weight;
+                }
+                if (totalWeight > MAX_WEIGHT_PER_PERSON)
+                {
+                    var ticketToUpdate = db.Tickets.Where(ps => ps.TicketId == baggageToAdd.TicketId).Single();
+                    ticketToUpdate.BaggageCharge = (decimal)((totalWeight - MAX_WEIGHT_PER_PERSON) * BAGGAGE_CHARGE_MULTIPLIER);
+                    db.Entry(ticketToUpdate).State = EntityState.Modified;
+                }
 
-            //        ModelState.AddModelError("", "Failed On Id " + item.ToString() + " : " + err.Message);
-            //        return View("CheckIn");
-            //    }
-            //}
-            //return View("CheckIn");
+                db.SaveChanges();
+
+
+                var bookingId = db.Tickets.Where(ps => ps.TicketId == baggageToAdd.TicketId).FirstOrDefault().BookingId;
+
+                var booking = db.Bookings.Include(ps => ps.Tickets).Where(ps => ps.BookingId == bookingId).FirstOrDefault();
+
+                //var tickets = db.Tickets.Include(ps => ps.Booking).Where(ps => ps.BookingId == baggageToAdd.Ticket.BookingId && ps.CheckIn != null).ToList()
+                //var tickets2 = db.Tickets.Include(ps => ps.Booking);
+                //var tickets3 = tickets2.Where(ps => ps.BookingId == baggageToAdd.Ticket.BookingId && ps.CheckIn != null).ToList();
+                //var tickets = tickets3.ToList();
+
+                return View("Baggage", booking.Tickets.ToList());
+            }
+            //ViewBag.FromAirportId = new SelectList(db.Airports, "AirportId", "AirportCode", flight.FromAirportId);
+            //ViewBag.ToAirportId = new SelectList(db.Airports, "AirportId", "AirportCode", flight.ToAirportId);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Success(Baggage baggageToAdd)
+        {
+            return View("Success");
         }
     }
 }

@@ -62,7 +62,7 @@
 
             @foreach (var item in Model.booking.Tickets)
             {
-                string checkin = item.CheckIn == null ?"":"checked";
+                string checkin = item.CheckIn == null ? "" : "checked";
                 <tr>
                     <td>
                         <input name="DynamicMultiBoxes"  id="Dynamic @item.TicketId" type="checkbox" value="@item.TicketId" @checkin />
@@ -71,23 +71,22 @@
                             @Html.DisplayFor(modelItem => item.TicketLastName)
                         </label>
                     </td>
-                    @* <td>
-                        @Html.DisplayFor(modelItem => item.Price)
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TicketIdType)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.TicketIdNumber)
-                    </td>*@
+                    </td>
                     <td>
-                        @{if (item.IsInfant == false)
+                        @if(item.IsInfant == false)
                           {
-                            @Html.Display("Dewasa");
+                           <p>Dewasa</p>
                           }
                           else
                           {
-                            @Html.Display("Infant");
-
+                           <p>Infant</p>
                           }
-                        }
+                        
                     </td>
                 </tr>
             }
