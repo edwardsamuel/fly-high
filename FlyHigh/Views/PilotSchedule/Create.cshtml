@@ -18,11 +18,12 @@
         </div>
         <div class="editor-field">
             @Html.DropDownList("ScheduleId", ViewBag.ScheduleId as SelectList, "Select...", new { onchange = "FetchPilots();" })
+            @*@Html.ValidationMessageFor(model => model.ScheduleId)*@
         </div>
 
         <p data-bind="visible: pilots().length > 0">
             <b>Pilot</b>
-            <select data-bind="options: pilots, optionsText: 'PilotName', optionsValue: 'PilotId', optionsCaption: 'Select...'"></select>
+            <select id="PilotId" name="PilotId" data-bind="options: pilots, optionsText: 'PilotName', optionsValue: 'PilotId', optionsCaption: 'Select...'"></select>
         </p>
 
         <div class="editor-label">

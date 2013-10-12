@@ -12,6 +12,8 @@
     <fieldset>
         <legend>PilotSchedule</legend>
 
+        @Html.HiddenFor(model => model.PilotScheduleId)
+
         <div class="editor-label">
             @Html.LabelFor(model => model.PilotId, "Pilot")
         </div>

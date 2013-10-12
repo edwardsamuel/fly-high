@@ -13,31 +13,6 @@ namespace FlyHigh.Controllers
     {
         private ErlanggaEntities db = new ErlanggaEntities();
 
-        public ActionResult GetPilots(int id = 0)
-        {
-            //select pilotname
-            //from pilot left join pilotschedule
-            //on pilot.pilotid = pilotschedule.pilotid
-            //and scheduleid=8
-            //where scheduleid is null
-
-            var pilots = db.Pilots;
-            var pilotschedules = db.PilotSchedules;
-
-            var result =
-                from pilot in pilots
-                join pilotschedule in pilotschedules.Where(x => x.ScheduleId == id)
-                on pilot.PilotId equals pilotschedule.PilotId into res
-                where !res.Any()
-                select new
-                {
-                    pilot.PilotName,
-                    pilot.PilotId
-                };
-
-            return this.Json(result, JsonRequestBehavior.AllowGet);
-        }
-
         //
         // GET: /PilotSchedule/
 
@@ -60,13 +35,36 @@ namespace FlyHigh.Controllers
             return View(pilotschedule);
         }
 
+        public ActionResult GetPilots(int id = 0)
+        {
+            //select pilotname
+            //from pilot left join pilotschedule
+            //on pilot.pilotid = pilotschedule.pilotid
+            //where
+            //scheduleid=8
+            var pilots = db.Pilots;
+            var pilotschedules = db.PilotSchedules;
+
+            var result =
+                from pilot in pilots
+                join pilotschedule in pilotschedules.Where(x => x.ScheduleId == id)
+                on pilot.PilotId equals pilotschedule.PilotId into res
+                where !res.Any()
+                select new
+                {
+                    pilot.PilotName,
+                    pilot.PilotId
+                };
+
+            return this.Json(result, JsonRequestBehavior.AllowGet);
+        }
         //
         // GET: /PilotSchedule/Create
 
         public ActionResult Create()
         {
+            //ViewBag.PilotId = new SelectList(db.Pilots, "PilotId", "PilotName");
             ViewBag.ScheduleId = new SelectList(db.Schedules, "ScheduleId", "ScheduleId");
-            SelectList s = new SelectList(db.Pilots, "PilotId", "PilotName");
             return View();
         }
 
@@ -91,9 +89,9 @@ namespace FlyHigh.Controllers
         //
         // GET: /PilotSchedule/Edit/5
 
-        public ActionResult Edit(int pilotId = 0, int scheduleId = 0)
+        public ActionResult Edit(int id = 0)
         {
-            PilotSchedule pilotschedule = db.PilotSchedules.Where(ps => ps.PilotId == pilotId && ps.ScheduleId == scheduleId).FirstOrDefault();
+            PilotSchedule pilotschedule = db.PilotSchedules.Find(id);
             if (pilotschedule == null)
             {
                 return HttpNotFound();
