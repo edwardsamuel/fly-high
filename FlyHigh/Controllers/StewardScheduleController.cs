@@ -13,6 +13,28 @@ namespace FlyHigh.Controllers
     {
         private ErlanggaEntities db = new ErlanggaEntities();
 
+        //
+        // GET: /StewardSchedule/
+
+        public ActionResult Index()
+        {
+            var stewardschedules = db.StewardSchedules.Include(s => s.Schedule).Include(s => s.Steward);
+            return View(stewardschedules.ToList());
+        }
+
+        //
+        // GET: /StewardSchedule/Details/5
+
+        public ActionResult Details(int id = 0)
+        {
+            StewardSchedule stewardschedule = db.StewardSchedules.Find(id);
+            if (stewardschedule == null)
+            {
+                return HttpNotFound();
+            }
+            return View(stewardschedule);
+        }
+
         public ActionResult GetStewards(int id = 0)
         {
             //select stewardname
@@ -39,34 +61,12 @@ namespace FlyHigh.Controllers
         }
 
         //
-        // GET: /StewardSchedule/
-
-        public ActionResult Index()
-        {
-            var stewardschedules = db.StewardSchedules.Include(s => s.Schedule).Include(s => s.Steward);
-            return View(stewardschedules.ToList());
-        }
-
-        //
-        // GET: /StewardSchedule/Details/5
-
-        public ActionResult Details(int id = 0)
-        {
-            StewardSchedule stewardschedule = db.StewardSchedules.Find(id);
-            if (stewardschedule == null)
-            {
-                return HttpNotFound();
-            }
-            return View(stewardschedule);
-        }
-
-        //
         // GET: /StewardSchedule/Create
 
         public ActionResult Create()
         {
             ViewBag.ScheduleId = new SelectList(db.Schedules, "ScheduleId", "ScheduleId");
-            SelectList s = new SelectList(db.Stewards, "StewardId", "StewardName");
+            ViewBag.StewardId = new SelectList(db.Stewards, "StewardId", "StewardName");
             return View();
         }
 
