@@ -1,0 +1,22 @@
+﻿@model FlyHigh.Models.Steward
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Steward</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StewardName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StewardName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.StewardId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

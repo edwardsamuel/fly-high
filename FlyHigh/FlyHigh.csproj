@@ -163,11 +163,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CheckInController.cs" />
     <Compile Include="Controllers\FlightController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ParkingController.cs" />
     <Compile Include="Controllers\PilotController.cs" />
     <Compile Include="Controllers\PilotScheduleController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
+    <Compile Include="Controllers\StewardController.cs" />
+    <Compile Include="Controllers\StewardScheduleController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\SimpleMembershipTestDbContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -183,6 +187,7 @@
     <Compile Include="Models\Booking.cs">
       <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CheckListAttribute.cs" />
     <Compile Include="Models\Class.cs">
       <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
@@ -204,6 +209,7 @@
     <Compile Include="Models\Flight.cs">
       <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CheckInModel.cs" />
     <Compile Include="Models\Member.cs">
       <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
@@ -328,9 +334,11 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\knockout-2.1.0.debug.js" />
-    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\knockout-2.3.0.debug.js" />
+    <Content Include="Scripts\knockout-2.3.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\pilotschedule.js" />
+    <Content Include="Scripts\stewardschedule.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -383,11 +391,31 @@
     <Content Include="Views\PilotSchedule\Create.cshtml" />
     <Content Include="Views\PilotSchedule\Edit.cshtml" />
     <Content Include="Views\PilotSchedule\Delete.cshtml" />
+    <Content Include="Views\CheckIn\Index.cshtml" />
+    <Content Include="Views\CheckIn\CheckIn.cshtml" />
+    <Content Include="Views\CheckIn\FormResult.cshtml" />
+    <Content Include="Views\Parking\Index.cshtml" />
+    <Content Include="Views\CheckIn\Success.cshtml" />
+    <Content Include="Views\Steward\Index.cshtml" />
+    <Content Include="Views\Steward\Details.cshtml" />
+    <Content Include="Views\Steward\Create.cshtml" />
+    <Content Include="Views\Steward\Edit.cshtml" />
+    <Content Include="Views\Steward\Delete.cshtml" />
+    <Content Include="Views\StewardSchedule\Index.cshtml" />
+    <Content Include="Views\StewardSchedule\Details.cshtml" />
+    <Content Include="Views\StewardSchedule\Create.cshtml" />
+    <Content Include="Views\StewardSchedule\Edit.cshtml" />
+    <Content Include="Views\StewardSchedule\Delete.cshtml" />
+    <Content Include="Views\CheckIn\AddBaggage.cshtml" />
+    <Content Include="Views\CheckIn\Baggage.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
-    <Content Include="Views\Account\LogOn.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_MenuBarPartial.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

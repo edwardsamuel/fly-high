@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+        <table>
+            <tr>
+                <th>
+                    Booking Id
+                </th>
+                <td>
+                    @Html.TextBox("id")
+                </td>
+            </tr>
+        </table>
+
+        <p>
+            <input type="submit" value="Berikutnya" />
+        </p>
+}
+
+

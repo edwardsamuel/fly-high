@@ -2,10 +2,29 @@
     <li>@Html.ActionLink("Home", "Index", "Home")</li>
     @if (Request.IsAuthenticated)
     {
+        if (Roles.IsUserInRole("Teller"))
+        {
+        <li>@Html.ActionLink("Check In", "Index", "CheckIn")</li>
+        }
+
+        if (Roles.IsUserInRole("Scheduler"))
+        {
+        <li>@Html.ActionLink("Flight", "Index", "Flight")</li>
+        <li>@Html.ActionLink("Schedule", "Index", "Schedule")</li>
+        <li>@Html.ActionLink("Parking", "Index", "Parking")</li>
+        }
+
+        if (Roles.IsUserInRole("Human Resource"))
+        {
+        <li>@Html.ActionLink("Pilot Staffing", "Index", "PilotSchedule")</li>
+        <li>@Html.ActionLink("Steward Staffing", "Index", "StewardSchedule")</li>
+        }
+        
+        @*
         if (Roles.IsUserInRole("Administrator"))
         {
-            <li>@Html.ActionLink("Flight", "Index", "Flight")</li>
+        <li><a href="#">Admin</a></li>
         }
-        <li>@Html.ActionLink("Schedule", "Index", "Schedule")</li>
+        *@
     }
 </ul>

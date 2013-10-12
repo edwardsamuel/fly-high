@@ -1,0 +1,107 @@
+﻿@model FlyHigh.Models.CheckInModel
+
+@{
+    ViewBag.Title = "Check In";
+}
+<h2>CheckIn</h2>
+
+@using (Html.BeginForm("CheckIn", "CheckIn", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Flight</legend>
+
+        @Html.HiddenFor(model => model.booking.BookingId)
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.booking.BookingIdType)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.booking.BookingIdType)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.booking.BookingIdNumber)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.booking.BookingIdNumber)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.booking.BookingFirstName)
+                </th>
+                <td>@Html.DisplayFor(model => model.booking.BookingFirstName)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.booking.BookingTimestamp)
+                </th>
+                <td>@Html.DisplayFor(model => model.booking.BookingTimestamp)
+                </td>
+            </tr>
+            <tr>
+                <th>Peserta
+                </th>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>Nama
+                </th>
+                <th>Id Type
+                </th>
+                <th>Id Number
+                </th>
+                <th>Infant
+                </th>
+            </tr>
+
+            @foreach (var item in Model.booking.Tickets)
+            {
+                string checkin = item.CheckIn == null ? "" : "checked";
+                <tr>
+                    <td>
+                        <input name="DynamicMultiBoxes"  id="Dynamic @item.TicketId" type="checkbox" value="@item.TicketId" @checkin />
+                        <label for="Dynamic @item.TicketId">
+                            @Html.DisplayFor(modelItem => item.TicketFirstName)
+                            @Html.DisplayFor(modelItem => item.TicketLastName)
+                        </label>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TicketIdType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TicketIdNumber)
+                    </td>
+                    <td>
+                        @if(item.IsInfant == false)
+                          {
+                           <p>Dewasa</p>
+                          }
+                          else
+                          {
+                           <p>Infant</p>
+                          }
+                        
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+
+
+        @*<div class="editor-field">
+            @Html.DropDownList("FromAirportId", String.Empty)
+            @Html.ValidationMessageFor(model => model.FromAirportId)
+        </div>*@
+
+        <p>
+            <input type="submit" value="Check In" />
+        </p>
+    </fieldset>
+}

@@ -1,0 +1,36 @@
+﻿@model FlyHigh.Models.StewardSchedule
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>StewardSchedule</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Steward.StewardName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Steward.StewardName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Schedule.ScheduleId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Schedule.ScheduleId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsHead)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsHead)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.StewardScheduleId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

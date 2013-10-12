@@ -1,4 +1,4 @@
-﻿@model FlyHigh.Models.PilotSchedule
+﻿@model FlyHigh.Models.StewardSchedule
 
 @{
     ViewBag.Title = "Create";
@@ -11,18 +11,18 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>PilotSchedule</legend>
+        <legend>StewardSchedule</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.ScheduleId, "Schedule")
         </div>
         <div class="editor-field">
-            @Html.DropDownList("ScheduleId", ViewBag.ScheduleId as SelectList, "Select...", new { onchange = "FetchPilots();" })
+            @Html.DropDownList("ScheduleId", ViewBag.ScheduleId as SelectList, "Select...", new { onchange = "FetchStewards();" })
         </div>
 
-        <p data-bind="visible: pilots().length > 0">
-            <b>Pilot</b>
-            <select data-bind="options: pilots, optionsText: 'PilotName', optionsValue: 'PilotId', optionsCaption: 'Select...'"></select>
+        <p data-bind="visible: stewards().length > 0">
+            <b>Steward</b>
+            <select data-bind="options: stewards, optionsText: 'StewardName', optionsValue: 'StewardId', optionsCaption: 'Select...'"></select>
         </p>
 
         <div class="editor-label">
@@ -45,5 +45,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/pilotschedule")
+    @Scripts.Render("~/bundles/stewardschedule")
 }
