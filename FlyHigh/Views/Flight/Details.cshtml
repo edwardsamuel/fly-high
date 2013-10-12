@@ -4,47 +4,52 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <fieldset>
-    <legend>Flight</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.FromAirport.AirportCode)
+    <legend>Flight Details</legend>
+    <div class="row">
+        <div class="col-md-2">
+            <b>@Html.DisplayNameFor(model => model.FromAirport)</b>
+        </div>
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.FromAirport.AirportCode)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.FromAirport.AirportCode)
+    <div class="row">
+        <div class="col-md-2">
+            <b>@Html.DisplayNameFor(model => model.ToAirport)</b>
+        </div>
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.ToAirport.AirportCode)
+        </div>
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ToAirport.AirportCode)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ToAirport.AirportCode)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Departure)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Departure)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Duration)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Duration)
+    <div class="row">
+        <div class="col-md-2">
+            <b>@Html.DisplayNameFor(model => model.Departure)</b>
+        </div>
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.Departure)
+        </div>
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.BasePrice)
+    <div class="row">
+        <div class="col-md-2">
+            <b>@Html.DisplayNameFor(model => model.Duration)</b>
+        </div>
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.Duration)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.BasePrice)
+    <div class="row">
+        <div class="col-md-2">
+            <b>@Html.DisplayNameFor(model => model.BasePrice)</b>
+        </div>
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.BasePrice)
+        </div>
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.FlightId }) |
-    @Html.ActionLink("Back to List", "Index")
+    <div class="row"></div>
+    @Html.ActionLink("Edit", "Edit", "Flight", new { id = Model.FlightId }, new { @class="btn btn-primary btn-sm"})
+    @Html.ActionLink("Back to List", "Index", "Flight", new { @class="btn btn-default btn-sm"})
 </p>

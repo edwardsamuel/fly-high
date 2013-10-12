@@ -4,44 +4,47 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "PilotSchedule", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form", @class = "form-horizontal" }))
 {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>PilotSchedule</legend>
+        <legend>Create Pilot Schedule</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ScheduleId, "Schedule")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("ScheduleId", ViewBag.ScheduleId as SelectList, "Select...", new { onchange = "FetchPilots();" })
-        </div>
-
-        <p data-bind="visible: pilots().length > 0">
-            <b>Pilot</b>
-            <select data-bind="options: pilots, optionsText: 'PilotName', optionsValue: 'PilotId', optionsCaption: 'Select...'"></select>
-        </p>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.IsHead)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.IsHead)
-            @Html.ValidationMessageFor(model => model.IsHead)
+        <div class="form-group">
+            @Html.LabelFor(model => model.ScheduleId, "Schedule", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownList("ScheduleId", ViewBag.ScheduleId as SelectList, new { @class = "form-control input-sm", onchange = "FetchPilots();" })
+            </div>
         </div>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Pilot.PilotName, "Pilot Name", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownList("PilotId", ViewBag.PilotName as SelectList, new { @class = "form-control input-sm" })
+                @Html.ValidationMessageFor(model => model.Pilot.PilotName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    @Html.CheckBoxFor(model => model.IsHead)
+                    @Html.LabelFor(model => model.IsHead, "Pilot Captain", new { @class = "checkbox" })
+                    @Html.ValidationMessageFor(model => model.IsHead)
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input class="btn btn-success btn-sm" type="submit" value="Create" />
+                @Html.ActionLink("Back to List", "Index", "PilotSchedule", new { @class = "btn btn-default btn-sm" })
+            </div>
+        </div>
     </fieldset>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

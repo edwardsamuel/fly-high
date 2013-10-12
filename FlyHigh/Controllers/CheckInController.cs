@@ -89,6 +89,7 @@ namespace FlyHigh.Controllers
                 {
                     totalWeight += baggage.Weight;
                 }
+
                 if (totalWeight > MAX_WEIGHT_PER_PERSON)
                 {
                     var ticketToUpdate = db.Tickets.Where(ps => ps.TicketId == baggageToAdd.TicketId).Single();

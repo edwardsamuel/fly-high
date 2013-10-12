@@ -66,7 +66,7 @@ namespace FlyHigh.Controllers
         public ActionResult Create()
         {
             ViewBag.ScheduleId = new SelectList(db.Schedules, "ScheduleId", "ScheduleId");
-            SelectList s = new SelectList(db.Pilots, "PilotId", "PilotName");
+            ViewBag.PilotName = new SelectList(db.Pilots, "PilotId", "PilotName");
             return View();
         }
 

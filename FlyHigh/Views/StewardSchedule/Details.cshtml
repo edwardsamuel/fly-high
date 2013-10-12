@@ -4,33 +4,39 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <fieldset>
-    <legend>StewardSchedule</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Steward.StewardName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Steward.StewardName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Schedule.ScheduleId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Schedule.ScheduleId)
+    <legend>Steward Schedule Details</legend>
+    <div class="row">
+        <div class="col-md-2">
+            <b>@Html.DisplayNameFor(model => model.Steward.StewardName)</b>
+        </div>
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.Steward.StewardName)
+        </div>
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.IsHead)
+    <div class="row">
+        <div class="col-md-2">
+            <b>@Html.DisplayNameFor(model => model.Schedule.ScheduleId)</b>
+        </div>
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.Schedule.ScheduleId)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IsHead)
+
+
+    <div class="row">
+        <div class="col-md-2">
+            <b>@Html.DisplayNameFor(model => model.IsHead)</b>
+        </div>
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.IsHead)
+        </div>
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.StewardScheduleId }) |
-    @Html.ActionLink("Back to List", "Index")
+
+    <div class="row"></div>
+    @Html.ActionLink("Edit", "Edit", "StewardSchedule", new { id = Model.StewardScheduleId }, new { @class = "btn btn-primary btn-sm" })
+    @Html.ActionLink("Back to List", "Index", "StewardSchedule", new { @class = "btn btn-default btn-sm" })
 </p>
