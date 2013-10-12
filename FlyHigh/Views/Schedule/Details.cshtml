@@ -4,33 +4,39 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
 <fieldset>
-    <legend>Schedule</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Flight.FlightId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Flight.FlightId)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Date)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Date)
+    <legend>Schedule Details</legend>
+    <div class="row">
+        <div class="col-md-2">
+            <b>@Html.DisplayNameFor(model => model.Flight.FlightId)</b>
+        </div>
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.Flight.FlightId)
+        </div>
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Plane.PlaneType)
+    <div class="row">
+        <div class="col-md-2">
+            <b> @Html.DisplayNameFor(model => model.Date)</b>
+        </div>
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.Date)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Plane.PlaneType)
+
+    <div class="row">
+        <div class="col-md-2">
+            <b>@Html.DisplayNameFor(model => model.Plane.PlaneType)</b>
+        </div>
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.Plane.PlaneType)
+        </div>
     </div>
+
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ScheduleId }) |
-    @Html.ActionLink("Back to List", "Index")
+    <div class="row"></div>
+    @Html.ActionLink("Edit", "Edit", "Schedule", new { id=Model.ScheduleId }, new { @class="btn btn-primary btn-sm"})
+    @Html.ActionLink("Back to List", "Index", "Schedule", new { @class="btn btn-default btn-sm"})
 </p>

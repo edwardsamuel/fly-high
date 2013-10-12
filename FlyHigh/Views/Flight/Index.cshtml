@@ -4,12 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Flight</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Flight", "Create", "Flight",new { @class="btn btn-success btn-xs"})
 </p>
-<table>
+<table class="table table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.FromAirport)
@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.BasePrice)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FlightId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FlightId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FlightId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.FlightId }, new {@class="btn btn-default btn-xs" })
+            @Html.ActionLink("Details", "Details", new { id = item.FlightId }, new {@class="btn btn-primary btn-xs" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.FlightId }, new { @class="btn btn-danger btn-xs"})
         </td>
     </tr>
 }

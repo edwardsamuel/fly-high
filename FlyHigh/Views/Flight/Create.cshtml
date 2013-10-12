@@ -4,60 +4,65 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
-@using (Html.BeginForm(new { role = "form", @class = "form-horizontal" }))
+@using (Html.BeginForm("Create", "Flight", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form", @class = "form-horizontal" }))
 {
     @Html.ValidationSummary(true)
-    
-        <div class="form-group">
-            @Html.LabelFor(model => model.FromAirportId, "From Airport", new { @class="col-lg-2 control-label" })
-            <div class="col-lg-10">
-                @Html.DropDownList("FromAirportId", (IEnumerable<SelectListItem>) ViewBag.FromAirportId, new { @class="form-control" })
-                @Html.ValidationMessageFor(model => model.FromAirportId)
-            </div>
-        </div>
-        
-        <div class="form-group">
-            @Html.LabelFor(model => model.ToAirportId, "To Airport", new { @class="col-lg-2 control-label" })
-            <div class="col-lg-10">
-                @Html.DropDownList("ToAirportId", (IEnumerable<SelectListItem>) ViewBag.ToAirportId, new { @class="form-control" })
-                @Html.ValidationMessageFor(model => model.ToAirportId)
-            </div>
-        </div>
+    <legend>Create Flight</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Departure)
+    <div class="form-group">
+        @Html.LabelFor(model => model.FromAirportId, "From", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownList("FromAirportId", (IEnumerable<SelectListItem>)ViewBag.FromAirportId, new { @class = "form-control input-sm" })
+            @Html.ValidationMessageFor(model => model.FromAirportId)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Departure)
+    </div>
+        
+    <div class="form-group">
+        @Html.LabelFor(model => model.ToAirportId, "To", new { @class = "col-md-2 control-label" })
+        <div class="col-lg-10">
+            @Html.DropDownList("ToAirportId", (IEnumerable<SelectListItem>)ViewBag.ToAirportId, new { @class = "form-control input-sm" })
+            @Html.ValidationMessageFor(model => model.ToAirportId)
+        </div>
+    </div>
+
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.Departure, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Departure, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Departure)
         </div>
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Duration)
+    <div class="form-group">
+        @Html.LabelFor(model => model.Duration, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <div class="input-group">
+                @Html.TextBoxFor(model => model.Duration, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Duration)
+                <span class="input-group-addon">hour(s)</span>
+            </div>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Duration)
-            @Html.ValidationMessageFor(model => model.Duration)
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.BasePrice, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <div class="input-group">
+                <span class="input-group-addon">Rp</span>
+                @Html.TextBoxFor(model => model.BasePrice, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BasePrice)
+                <span class="input-group-addon">.00</span>
+            </div>
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.BasePrice)
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input class="btn btn-success btn-sm" type="submit" value="Create">
+            @Html.ActionLink("Back to List", "Index", "Flight", new { @class = "btn btn-default btn-sm" })
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.BasePrice)
-            @Html.ValidationMessageFor(model => model.BasePrice)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+    </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

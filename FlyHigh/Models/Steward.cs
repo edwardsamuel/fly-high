@@ -11,6 +11,7 @@ namespace FlyHigh.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Steward
     {
@@ -20,6 +21,8 @@ namespace FlyHigh.Models
         }
     
         public int StewardId { get; set; }
+
+        [Display(Name = "Steward Name")]
         public string StewardName { get; set; }
     
         public virtual ICollection<StewardSchedule> StewardSchedules { get; set; }

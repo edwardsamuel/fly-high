@@ -4,36 +4,43 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
 <fieldset>
-    <legend>StewardSchedule</legend>
+    <legend>Delete Steward Schedule</legend>
+    <h2>Are you sure you want to delete this?</h2>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Steward.StewardName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Steward.StewardName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Schedule.ScheduleId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Schedule.ScheduleId)
+    <div class="row">
+        <div class="col-md-2">
+            <b>@Html.DisplayNameFor(model => model.Steward.StewardName)</b>
+        </div>
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.Steward.StewardName)
+        </div>
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.IsHead)
+    <div class="row">
+        <div class="col-md-2">
+            <b>@Html.DisplayNameFor(model => model.Schedule.ScheduleId)</b>
+        </div>
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.Schedule.ScheduleId)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IsHead)
+
+    <div class="row">
+        <div class="col-md-2">
+            <b>@Html.DisplayNameFor(model => model.IsHead)</b>
+        </div>
+        <div class="col-md-8">
+                @Html.DisplayFor(model => model.IsHead)
+        </div>
     </div>
+
 </fieldset>
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <div class="row"></div>
+        <input class="btn btn-danger btn-sm" type="submit" value="Delete" />
+        @Html.ActionLink("Back to List", "Index", "StewardSchedule", new { @class = "btn btn-default btn-sm" })
     </p>
 }

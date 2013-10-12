@@ -4,21 +4,27 @@
     ViewBag.Title = "Create";
 }
 
+<<<<<<< HEAD
 <h2>Create</h2>
 
 @using (Html.BeginForm()) {
+=======
+@using (Html.BeginForm("Create", "StewardSchedule", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form", @class = "form-horizontal" }))
+{
+>>>>>>> 26ee06652ae592251d0977ebbd29be3908d00a2b
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>StewardSchedule</legend>
+        <legend>Create Steward Schedule</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ScheduleId, "Schedule")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("ScheduleId", ViewBag.ScheduleId as SelectList, "Select...", new { onchange = "FetchStewards();" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ScheduleId, "Schedule", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownList("ScheduleId", ViewBag.ScheduleId as SelectList, "Select...", new { @class = "form-control input-sm", onchange = "FetchStewards();" })
+            </div>
         </div>
 
+<<<<<<< HEAD
         <p data-bind="visible: stewards().length > 0">
             <b>Steward</b>
             <select id="StewardId" name="StewardId" data-bind="options: stewards, optionsText: 'StewardName', optionsValue: 'StewardId', optionsCaption: 'Select...'"></select>
@@ -26,21 +32,34 @@
 
         <div class="editor-label">
             @Html.LabelFor(model => model.IsHead)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.IsHead)
-            @Html.ValidationMessageFor(model => model.IsHead)
+=======
+        <div class="form-group">
+            @Html.LabelFor(model => model.Steward.StewardName, "Steward Name", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownList("ScheduleId", ViewBag.StewardName as SelectList, new { @class = "form-control input-sm", onchange = "FetchStewards();" })
+                @Html.ValidationMessageFor(model => model.Steward.StewardName)
+            </div>
+>>>>>>> 26ee06652ae592251d0977ebbd29be3908d00a2b
         </div>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    @Html.CheckBoxFor(model => model.IsHead)
+                    @Html.LabelFor(model => model.IsHead, "Steward Captain", new { @class = "checkbox" })
+                    @Html.ValidationMessageFor(model => model.IsHead)
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input class="btn btn-success btn-sm" type="submit" value="Create" />
+                @Html.ActionLink("Back to List", "Index", "StewardSchedule", new { @class = "btn btn-default btn-sm" })
+            </div>
+        </div>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
