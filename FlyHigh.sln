@@ -3,16 +3,52 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyHigh", "FlyHigh\FlyHigh.csproj", "{4561FA1E-0EAF-428D-A5E7-9B6185561189}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySql.Data.Extension", "MySql.Data.Extension\MySql.Data.Extension.csproj", "{4E2A1497-BD2C-46E1-80B7-82E2B4ECA21B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySql.Web.Extension", "MySql.Web.Extension\MySql.Web.Extension.csproj", "{E3E3B30A-0DBD-462B-8CA0-9377AFA84381}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{4561FA1E-0EAF-428D-A5E7-9B6185561189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4561FA1E-0EAF-428D-A5E7-9B6185561189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4561FA1E-0EAF-428D-A5E7-9B6185561189}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4561FA1E-0EAF-428D-A5E7-9B6185561189}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{4561FA1E-0EAF-428D-A5E7-9B6185561189}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4561FA1E-0EAF-428D-A5E7-9B6185561189}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4561FA1E-0EAF-428D-A5E7-9B6185561189}.Release|x64.ActiveCfg = Release|Any CPU
+		{4561FA1E-0EAF-428D-A5E7-9B6185561189}.Release|x86.ActiveCfg = Release|Any CPU
+		{4E2A1497-BD2C-46E1-80B7-82E2B4ECA21B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E2A1497-BD2C-46E1-80B7-82E2B4ECA21B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E2A1497-BD2C-46E1-80B7-82E2B4ECA21B}.Debug|x64.ActiveCfg = Debug|x64
+		{4E2A1497-BD2C-46E1-80B7-82E2B4ECA21B}.Debug|x64.Build.0 = Debug|x64
+		{4E2A1497-BD2C-46E1-80B7-82E2B4ECA21B}.Debug|x86.ActiveCfg = Debug|x86
+		{4E2A1497-BD2C-46E1-80B7-82E2B4ECA21B}.Debug|x86.Build.0 = Debug|x86
+		{4E2A1497-BD2C-46E1-80B7-82E2B4ECA21B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E2A1497-BD2C-46E1-80B7-82E2B4ECA21B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E2A1497-BD2C-46E1-80B7-82E2B4ECA21B}.Release|x64.ActiveCfg = Release|x64
+		{4E2A1497-BD2C-46E1-80B7-82E2B4ECA21B}.Release|x64.Build.0 = Release|x64
+		{4E2A1497-BD2C-46E1-80B7-82E2B4ECA21B}.Release|x86.ActiveCfg = Release|x86
+		{4E2A1497-BD2C-46E1-80B7-82E2B4ECA21B}.Release|x86.Build.0 = Release|x86
+		{E3E3B30A-0DBD-462B-8CA0-9377AFA84381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3E3B30A-0DBD-462B-8CA0-9377AFA84381}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3E3B30A-0DBD-462B-8CA0-9377AFA84381}.Debug|x64.ActiveCfg = Debug|x64
+		{E3E3B30A-0DBD-462B-8CA0-9377AFA84381}.Debug|x64.Build.0 = Debug|x64
+		{E3E3B30A-0DBD-462B-8CA0-9377AFA84381}.Debug|x86.ActiveCfg = Debug|x86
+		{E3E3B30A-0DBD-462B-8CA0-9377AFA84381}.Debug|x86.Build.0 = Debug|x86
+		{E3E3B30A-0DBD-462B-8CA0-9377AFA84381}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3E3B30A-0DBD-462B-8CA0-9377AFA84381}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3E3B30A-0DBD-462B-8CA0-9377AFA84381}.Release|x64.ActiveCfg = Release|x64
+		{E3E3B30A-0DBD-462B-8CA0-9377AFA84381}.Release|x64.Build.0 = Release|x64
+		{E3E3B30A-0DBD-462B-8CA0-9377AFA84381}.Release|x86.ActiveCfg = Release|x86
+		{E3E3B30A-0DBD-462B-8CA0-9377AFA84381}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

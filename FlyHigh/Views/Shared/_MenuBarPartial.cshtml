@@ -1,0 +1,11 @@
+﻿<ul class="nav navbar-nav">
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+    @if (Request.IsAuthenticated)
+    {
+        if (Roles.IsUserInRole("Administrator"))
+        {
+            <li>@Html.ActionLink("Flight", "Index", "Flight")</li>
+        }
+        <li>@Html.ActionLink("Schedule", "Index", "Schedule")</li>
+    }
+</ul>
