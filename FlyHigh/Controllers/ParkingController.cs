@@ -42,15 +42,15 @@ namespace FlyHigh.Controllers
 
         public ActionResult Index()
         {
-            var schedules = db.Schedules.Include(s => s.Flight).Include(s => s.Plane);
-            return View(schedules.ToList());
+            return View();
         }
         //
         // GET: /Parking/Details/5
 
         public ActionResult Details(int id)
         {
-            return View();
+            var schedules = db.Schedules.Include(s => s.Flight).Include(s => s.Plane);
+            return View(schedules.ToList());
         }
 
         //

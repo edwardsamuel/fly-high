@@ -28,25 +28,33 @@ namespace FlyHigh.Models
         public System.DateTime Date { get; set; }
         public int PlaneId { get; set; }
     
-        public System.DateTime DepartureTime
+        public virtual System.DateTime DepartureTime
         {
             get
             {
-                return new DateTime(Date.Year, Date.Month, Date.Day, Flight.Departure.Hours, Flight.Departure.Minutes,
-                    Flight.Departure.Seconds);
+                if (Flight != null)
+                {
+                    return new DateTime(Date.Year, Date.Month, Date.Day, Flight.Departure.Hours, Flight.Departure.Minutes,
+                        Flight.Departure.Seconds);
+                }
+                return Date;
             }
         }
 
-        public System.DateTime ArrivalTime
+        public virtual System.DateTime ArrivalTime
         {
             get
             {
-                DateTime d = DepartureTime.Add(TimeSpan.FromHours(Flight.Duration));
-                return d;
+                if (Flight != null)
+                {
+                    DateTime d = DepartureTime.Add(TimeSpan.FromMinutes(Flight.Duration));
+                    return d;
+                }
+                return Date;
             }
         }
 
-        public TimeSpan ParkingDuration
+        public virtual TimeSpan ParkingDuration
         {
             get
             {

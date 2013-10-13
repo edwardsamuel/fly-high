@@ -6,14 +6,17 @@
 
 @using (Html.BeginForm("Edit", "Flight", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
     @Html.ValidationSummary(true)
-
-        <legend>Edit Flight</legend>
-
+    
+        if (ViewBag.ConflictedSchedule != null) 
+        {
+            <p class="text-danger">Conflict with @ViewBag.ConflictedSchedule.ScheduleId</p>
+        }
+    
         @Html.HiddenFor(model => model.FlightId)
         <div class="form-group">
             @Html.LabelFor(model => model.FromAirportId, "From", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.DropDownList("FromAirportId", (IEnumerable<SelectListItem>)ViewBag.FromAirportId, new { @class = "form-control input-sm" })
+                @Html.DropDownList("FromAirportId", null, new { @class = "form-control input-sm" })
                 @Html.ValidationMessageFor(model => model.FromAirportId)
             </div>
         </div>
@@ -21,7 +24,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ToAirportId, "To", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.DropDownList("ToAirportId", (IEnumerable<SelectListItem>)ViewBag.FromAirportId, new { @class = "form-control input-sm" })
+                @Html.DropDownList("ToAirportId", null, new { @class = "form-control input-sm" })
                 @Html.ValidationMessageFor(model => model.ToAirportId)
             </div>
         </div>

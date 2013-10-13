@@ -16,7 +16,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FlightId, "Flight", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.DropDownList("FlightId", (IEnumerable<SelectListItem>)ViewBag.FlightId, new { @class = "form-control input-sm" })
+                @Html.DropDownList("FlightId", null, new { @class = "form-control input-sm" })
                 @Html.ValidationMessageFor(model => model.FlightId)
             </div>
         </div>
@@ -32,7 +32,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PlaneId, "Plane", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.DropDownList("PlaneId", (IEnumerable<SelectListItem>)ViewBag.PlaneId, new { @class = "form-control input-sm" })
+                @Html.DropDownList("PlaneId", null, new { @class = "form-control input-sm" })
                 @Html.ValidationMessageFor(model => model.PlaneId)
             </div>
         </div>

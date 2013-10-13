@@ -73,8 +73,13 @@ namespace FlyHigh.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FromAirportId = new SelectList(db.Airports, "AirportId", "AirportCode", flight.FromAirportId);
-            ViewBag.ToAirportId = new SelectList(db.Airports, "AirportId", "AirportCode", flight.ToAirportId);
+
+            SelectList from = new SelectList(db.Airports, "AirportId", "AirportCode", flight.FromAirportId);
+            SelectList to = new SelectList(db.Airports, "AirportId", "AirportCode", flight.ToAirportId);
+
+            ViewBag.FromAirportId = from;
+            ViewBag.ToAirportId = to;
+
             return View(flight);
         }
 
