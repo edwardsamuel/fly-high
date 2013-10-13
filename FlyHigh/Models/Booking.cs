@@ -11,6 +11,7 @@ namespace FlyHigh.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     
     public partial class Booking
     {
@@ -18,12 +19,19 @@ namespace FlyHigh.Models
         {
             this.Tickets = new HashSet<Ticket>();
         }
-    
+
+        [DisplayName("Booking Id")]
         public long BookingId { get; set; }
+
+        [DisplayName("First Name")]
         public string BookingFirstName { get; set; }
+        [DisplayName("Last Name")]
         public string BookingLastName { get; set; }
+        [DisplayName("ID Type")]
         public string BookingIdType { get; set; }
+        [DisplayName("ID Number")]
         public string BookingIdNumber { get; set; }
+        [DisplayName("Timestamp")]
         public System.DateTime BookingTimestamp { get; set; }
     
         public virtual ICollection<Ticket> Tickets { get; set; }

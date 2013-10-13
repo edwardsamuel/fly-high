@@ -4,14 +4,14 @@
     ViewBag.Title = "Edit";
 }
 
-@using (Html.BeginForm("Edit", "Flight", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
+<h1>Flight</h1>
+
+@using (Html.BeginForm("Edit", "Flight", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
     @Html.ValidationSummary(true)
     
-        if (ViewBag.ConflictedSchedule != null) 
-        {
-            <p class="text-danger">Conflict with @ViewBag.ConflictedSchedule.ScheduleId</p>
-        }
-    
+    <fieldset>
+        <legend>Edit Flight</legend>
         @Html.HiddenFor(model => model.FlightId)
         <div class="form-group">
             @Html.LabelFor(model => model.FromAirportId, "From", new { @class = "col-md-2 control-label" })
@@ -43,7 +43,7 @@
                 <div class="input-group">
                     @Html.TextBoxFor(model => model.Duration, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Duration)
-                    <span class="input-group-addon">hour(s)</span>
+                    <span class="input-group-addon">minute(s)</span>
                 </div>
             </div>
         </div>
@@ -64,9 +64,10 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input class="btn btn-success btn-sm" type="submit" value="Save">
-                @Html.ActionLink("Back to List", "Index", "Flight", new { @class="btn btn-default btn-sm" })
+                @Html.ActionLink("Back to List", "Index", "Flight", new { @class = "btn btn-default btn-sm" })
             </div>
         </div>
+    </fieldset>
 }
 
 @section Scripts {

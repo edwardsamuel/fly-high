@@ -213,6 +213,7 @@
     <Compile Include="Models\Member.cs">
       <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ParkingModel.cs" />
     <Compile Include="Models\Pilot.cs">
       <DependentUpon>Erlangga.tt</DependentUpon>
     </Compile>
@@ -435,6 +436,7 @@
     <Content Include="Views\StewardSchedule\Create.cshtml" />
     <Content Include="Views\StewardSchedule\Edit.cshtml" />
     <Content Include="Views\StewardSchedule\Delete.cshtml" />
+    <Content Include="Views\Parking\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

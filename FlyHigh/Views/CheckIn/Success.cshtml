@@ -2,7 +2,6 @@
     ViewBag.Title = "Success";
 }
 
-<div class="container">
-    <h2>Success</h2>
-    @Html.ActionLink("Validate New Passenger", "Index", "CheckIn", new { @class = "btn btn-primary btn-sm"})
-</div>
+<h1>Check In</h1>
+<h3 class="text-success">Success</h3>
+@Html.ActionLink("OK", "Index", "CheckIn", null, new { @class = "btn btn-primary btn-sm" })

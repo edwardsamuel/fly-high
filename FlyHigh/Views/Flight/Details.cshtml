@@ -4,6 +4,8 @@
     ViewBag.Title = "Details";
 }
 
+<h1>Flight</h1>
+
 <fieldset>
     <legend>Flight Details</legend>
     <div class="row">
@@ -47,9 +49,16 @@
             @Html.DisplayFor(model => model.BasePrice)
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12"> @Html.ActionLink("Edit", "Edit", "Flight", new { id = Model.FlightId }, new { @class = "btn btn-primary btn-sm" })
+        @Html.ActionLink("Back to List", "Index", "Flight", null, new { @class = "btn btn-default btn-sm" })</div>
+    </div>
+    <p>
+       
+    </p>
 </fieldset>
-<p>
-    <div class="row"></div>
-    @Html.ActionLink("Edit", "Edit", "Flight", new { id = Model.FlightId }, new { @class="btn btn-primary btn-sm"})
-    @Html.ActionLink("Back to List", "Index", "Flight", new { @class="btn btn-default btn-sm"})
-</p>

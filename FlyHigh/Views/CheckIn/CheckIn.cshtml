@@ -3,103 +3,115 @@
 @{
     ViewBag.Title = "Check In";
 }
-<h2>CheckIn</h2>
+<h1>Check In</h1>
 
-@using (Html.BeginForm("CheckIn", "CheckIn", FormMethod.Post))
+@using (Html.BeginForm("CheckIn", "CheckIn", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Check In</legend>
+        <legend>Booking Information</legend>
 
         @Html.HiddenFor(model => model.booking.BookingId)
 
-        <div class="form-group">
+        <div class="row">
             <div class="col-md-2">
-                <b>@Html.DisplayNameFor(model => model.booking.BookingIdType)</b>
+                <strong>@Html.DisplayNameFor(model => model.booking.BookingIdType)</strong>
             </div>
             <div class="col-md-10">
                 @Html.DisplayFor(model => model.booking.BookingIdType)
             </div>
         </div>
-        <div class="form-group">
+
+        <div class="row">
             <div class="col-md-2">
-                <b>@Html.DisplayNameFor(model => model.booking.BookingIdNumber)</b>
+                <strong>@Html.DisplayNameFor(model => model.booking.BookingIdNumber)</strong>
             </div>
             <div class="col-md-10">
                 @Html.DisplayFor(model => model.booking.BookingIdNumber)
             </div>
         </div>
-        <div class="form-group">
+        <div class="row">
             <div class="col-md-2">
-                <b>@Html.DisplayNameFor(model => model.booking.BookingFirstName)</b>
+                <strong>@Html.DisplayNameFor(model => model.booking.BookingFirstName)</strong>
             </div>
             <div class="col-md-10">
                 @Html.DisplayFor(model => model.booking.BookingFirstName)
             </div>
         </div>
-        <div class="form-group">
+        <div class="row">
             <div class="col-md-2">
-                <b>@Html.DisplayNameFor(model => model.booking.BookingTimestamp)</b>
+                <strong>@Html.DisplayNameFor(model => model.booking.BookingLastName)</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.booking.BookingLastName)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@Html.DisplayNameFor(model => model.booking.BookingTimestamp)</strong>
             </div>
             <div class="col-md-10">
                 @Html.DisplayFor(model => model.booking.BookingTimestamp)
             </div>
         </div>
-        <div class="row">
-        </div>
-        <div class="row"></div>
-        <h4>Passenger</h4>
-        <table class="table table-hover">
-            <tr>
-                <th>Name</th>
-                <th>Id Type</th>
-                <th>Id Number</th>
-                <th>Infant</th>
-            </tr>
-
-            @foreach (var item in Model.booking.Tickets)
-            {
-                string checkin = item.CheckIn == null ? "" : "checked";
-                <tr>
-                    <td>
-                        <input name="DynamicMultiBoxes"  id="Dynamic @item.TicketId" type="checkbox" value="@item.TicketId" @checkin />
-                        <label for="Dynamic @item.TicketId">
-                            @Html.DisplayFor(modelItem => item.TicketFirstName)
-                            @Html.DisplayFor(modelItem => item.TicketLastName)
-                        </label>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TicketIdType)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TicketIdNumber)
-                    </td>
-                    <td>
-                        @if (item.IsInfant == false)
-                        {
-                            <p>Adult</p>
-                        }
-                        else
-                        {
-                            <p>Infant</p>
-                        }
-
-                    </td>
-                </tr>
-            }
-
-        </table>
-
-
-
-        @*<div class="editor-field">
-            @Html.DropDownList("FromAirportId", String.Empty)
-            @Html.ValidationMessageFor(model => model.FromAirportId)
-        </div>*@
-
-        <p>
-            <input class="btn btn-primary btn-sm" type="submit" value="Check In" />
-        </p>
     </fieldset>
+    
+    <div class="form-group">
+        <div class="col-md-12">
+            &nbsp;
+        </div>
+    </div>
+    
+    <fieldset>
+        <legend>Passengers</legend>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Id Type</th>
+                    <th>Id Number</th>
+                    <th>Infant</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.booking.Tickets)
+                {
+                    string checkin = item.CheckIn == null ? "" : "checked";
+                    <tr>
+                        <td>
+                            <input name="DynamicMultiBoxes"  id="Dynamic @item.TicketId" type="checkbox" value="@item.TicketId" @checkin />
+                            <label for="Dynamic @item.TicketId">
+                                @Html.DisplayFor(modelItem => item.TicketFirstName)
+                                @Html.DisplayFor(modelItem => item.TicketLastName)
+                            </label>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TicketIdType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TicketIdNumber)
+                        </td>
+                        <td>
+                            @if (item.IsInfant == false)
+                            {
+                                <p>Adult</p>
+                            }
+                            else
+                            {
+                                <p>Infant</p>
+                            }
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </fieldset>
+    
+    <div class="form-group">
+        <div class="col-md-12">
+            <input class="btn btn-primary btn-sm" type="submit" value="Check In" />
+        </div>
+    </div>
 }

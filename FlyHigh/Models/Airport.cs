@@ -11,6 +11,7 @@ namespace FlyHigh.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     
     public partial class Airport
     {
@@ -21,6 +22,8 @@ namespace FlyHigh.Models
         }
     
         public int AirportId { get; set; }
+
+        [DisplayName("Airport Code")]
         public string AirportCode { get; set; }
         public string AirportName { get; set; }
         public string City { get; set; }

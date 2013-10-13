@@ -4,6 +4,8 @@
     ViewBag.Title = "Edit";
 }
 
+<h1>Schedule</h1>
+
 @using (Html.BeginForm("Edit", "Schedule", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.ValidationSummary(true)

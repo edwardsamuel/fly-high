@@ -1,56 +1,32 @@
-﻿@model IEnumerable<FlyHigh.Models.Schedule>
-
-@{
-    ViewBag.Title = "Parking";
+﻿@{
+    ViewBag.Title = "Index";
 }
 
-<h2>Parking</h2>
+<h1>Parking</h1>
 
-<table class="table table-hover">
-    <tr>
-        <th>
-            @Html.DisplayName("Plane ID")
-        </th>
-        <th>
-            @Html.DisplayName("From")
-        </th>
-        <th>
-            @Html.DisplayName("To")
-        </th>
-        <th>
-            @Html.DisplayName("Departure")
-        </th>
-        <th>
-            @Html.DisplayName("Arrival")
-        </th>
-        <th>
-            @Html.DisplayName("Parking Duration")
-        </th>
-        <th></th>
-    </tr>
+@using (Html.BeginForm("Details", "Parking", null, FormMethod.Get, new { role = "form", @class = "form-horizontal" }))
+{
+    <fieldset>
+        <legend>Choose Date</legend>
+        
+        <div class="form-group">
+            @Html.Label("PlaneId", "From", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownList("PlaneId", null, new { @class = "form-control input-sm" })
+            </div>
+        </div>
 
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="date">Date</label>
+            <div class="col-md-10">
+                <input class="form-control input-md" id="date" name="date" type="text" value="" placeholder="Date">
+            </div>
+        </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(ModelItem => item.PlaneId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Flight.FromAirport.AirportCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Flight.ToAirport.AirportCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DepartureTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArrivalTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ParkingDuration)
-        </td>
-    </tr>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input class="btn btn-primary btn-md" type="submit" value="Next" />
+            </div>
+        </div>
+    </fieldset>
 }
-
-</table>

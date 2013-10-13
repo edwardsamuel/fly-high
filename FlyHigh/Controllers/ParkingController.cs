@@ -6,129 +6,62 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FlyHigh.Models;
+using System.Data.Objects;
 
 namespace FlyHigh.Controllers
 {
+    [Authorize(Roles = "Scheduler")]
     public class ParkingController : Controller
     {
         private ErlanggaEntities db = new ErlanggaEntities();
+
         //
         // GET: /Parking/
-
-        //public ActionResult Index()
-        //{
-        //    var flights = db.Flights.Include(f => f.FromAirport).Include(f => f.ToAirport);
-        //    List<TimeSpan> arrivalTimeList = new List<TimeSpan>();
-        //    List<ParkingItem> ParkingViewModel = new List<ParkingItem>();
-        //    foreach (var f in flights)
-        //    {
-        //        TimeSpan arrivalTime = TimeSpan.FromMinutes(f.Duration) + f.Departure;
-        //        ParkingItem p = new ParkingItem();
-        //        p.Departure = f.Departure;
-        //        p.Duration = f.Duration;
-        //        p.FlightId = f.FlightId;
-        //        p.FromAirport = f.FromAirport;
-        //        p.FromAirportID = f.FromAirportId;
-        //        p.ToAirport = f.ToAirport;
-        //        p.ToAirportID = f.ToAirportId;
-        //        p.Arrival = arrivalTime;
-        //        p.ParkingDuration = Convert.ToInt32((p.Arrival - p.Departure).TotalHours);
-        //        ParkingViewModel.Add(p);
-        //    }
-        //    //ViewData["arrivalTimeList"] = new SelectList(arrivalTimeList);
-        //    //return View(flights.ToList());
-        //    return View(ParkingViewModel);
-        //}
-
+        
         public ActionResult Index()
         {
-            return View();
-        }
-        //
-        // GET: /Parking/Details/5
-
-        public ActionResult Details(int id)
-        {
-            var schedules = db.Schedules.Include(s => s.Flight).Include(s => s.Plane);
-            return View(schedules.ToList());
-        }
-
-        //
-        // GET: /Parking/Create
-
-        public ActionResult Create()
-        {
+            ViewData.Add("PlaneId", new SelectList(db.Planes, "PlaneId", "PlaneId"));
             return View();
         }
 
         //
-        // POST: /Parking/Create
+        // GET: /Parking/Details?planeId=1&date=2013-12-30
 
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Details(int planeId, DateTime date)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            var q = from p in db.Schedules
+                    where p.Date > date
+                    select p;
 
-                return RedirectToAction("Index");
-            }
-            catch
+            var scheduleBefore = db.Schedules.Include(s => s.Flight).Include(s => s.Plane).OrderByDescending(p => p.Date).OrderByDescending(p => p.Flight.Departure).FirstOrDefault(p => p.PlaneId == planeId && p.Date < date);
+            var scheduleIn = db.Schedules.Include(s => s.Flight).Include(s => s.Plane).Where(p => p.PlaneId == planeId && p.Date == date).ToList();
+            var scheduleAfter = db.Schedules.Include(s => s.Flight).Include(s => s.Plane).FirstOrDefault(p => p.PlaneId == planeId && p.Date > date);
+            
+            List<ParkingModel> parking = new List<ParkingModel>();
+
+            ParkingModel pm = new ParkingModel(scheduleBefore, null);
+            if (scheduleIn.Count > 0)
             {
-                return View();
+                pm.Departure = scheduleIn[0];
+                parking.Add(pm);
+
+                for (int i = 0, len = scheduleIn.Count - 1; i < len; i++)
+                {
+                    pm = new ParkingModel(scheduleIn[i], scheduleIn[i + 1]);
+                    parking.Add(pm);
+                }
+
+                pm = new ParkingModel(scheduleIn[scheduleIn.Count - 1], scheduleAfter);
+                parking.Add(pm);
             }
+            else
+            {
+                pm.Departure = scheduleAfter;
+                parking.Add(pm);
+            }
+
+            return View(parking);
         }
 
-        //
-        // GET: /Parking/Edit/5
-
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Parking/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Parking/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Parking/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

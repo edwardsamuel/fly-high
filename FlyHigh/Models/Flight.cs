@@ -19,7 +19,8 @@ namespace FlyHigh.Models
         {
             this.Schedules = new HashSet<Schedule>();
         }
-    
+
+        [Display(Name = "Flight Id")]
         public int FlightId { get; set; }
         public int FromAirportId { get; set; }
         public int ToAirportId { get; set; }

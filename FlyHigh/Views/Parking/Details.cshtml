@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FlyHigh.Models.Schedule>
+﻿@model IEnumerable<FlyHigh.Models.ParkingModel>
 
 @{
     ViewBag.Title = "Parking";
@@ -7,50 +7,77 @@
 <h2>Parking</h2>
 
 <table class="table table-hover">
-    <tr>
-        <th>
-            @Html.DisplayName("Plane ID")
-        </th>
-        <th>
-            @Html.DisplayName("From")
-        </th>
-        <th>
-            @Html.DisplayName("To")
-        </th>
-        <th>
-            @Html.DisplayName("Departure")
-        </th>
-        <th>
-            @Html.DisplayName("Arrival")
-        </th>
-        <th>
-            @Html.DisplayName("Parking Duration")
-        </th>
-        <th></th>
-    </tr>
-
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(ModelItem => item.PlaneId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Flight.FromAirport.AirportCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Flight.ToAirport.AirportCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DepartureTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArrivalTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ParkingDuration)
-        </td>
-    </tr>
-}
-
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Arrival.Flight.ToAirport.AirportCode)
+            </th>
+            <th colspan="2">
+                @Html.DisplayNameFor(model => model.Arrival)
+            </th>
+            <th colspan="2">
+                @Html.DisplayNameFor(model => model.Departure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Parking)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.Arrival != null && item.Departure != null && item.Arrival.Flight.ToAirport.AirportCode == item.Departure.Flight.FromAirport.AirportCode)
+                    {
+                        @Html.DisplayFor(ModelItem => item.Arrival.Flight.ToAirport.AirportCode)
+                    }
+                    else
+                    {
+                        if (item.Arrival != null)
+                        {
+                        @Html.DisplayFor(ModelItem => item.Arrival.Flight.ToAirport.AirportCode)
+                        }
+                        else
+                        {
+                        <span>-</span>
+                        }
+                        <span>/</span>
+                        if (item.Departure != null)
+                        {
+                        @Html.DisplayFor(ModelItem => item.Departure.Flight.FromAirport.AirportCode)
+                        }
+                        else
+                        {
+                        <span>-</span>
+                        }
+                    }
+                </td>
+                <td>
+                    @if (item.Arrival != null)
+                    {
+                        @Html.ActionLink(item.Arrival.ScheduleId.ToString(), "Details", "Schedule", new { id = item.Arrival.ScheduleId }, null)
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Arrival.ArrivalTime)
+                </td>
+                <td>
+                    @if (item.Departure != null)
+                    {
+                        @Html.ActionLink(item.Departure.ScheduleId.ToString(), "Details", "Schedule", new { id = item.Departure.ScheduleId }, null)
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Departure.DepartureTime)
+                </td>
+                <td>
+                    @if (item.Arrival != null && item.Departure != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Parking)
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

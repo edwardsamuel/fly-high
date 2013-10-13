@@ -4,51 +4,61 @@
     ViewBag.Title = "Baggage";
 }
 
-<h2>Baggage</h2>
+<h1>Baggage</h1>
+
 @using (Html.BeginForm(Html.BeginForm("Success", "CheckIn", null, FormMethod.Post, new { @class = "form-horizontal", role = "form" })))
 {
     @Html.ValidationSummary(true)
     <table class="table table-hover">
-        <tr>
-            <th>Nama</th>
-            <th>Total Weight</th>
-            <th>Baggage Charge</th>
-            <th>Bagasi</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Total Weight</th>
+                <th>Baggage Charge</th>
+                <th></th>
+            </tr>
+        </thead>
         @{decimal totalcharge = 0;}
 
-        @foreach (var ticket in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => ticket.TicketFirstName)
-                    @Html.DisplayFor(modelItem => ticket.TicketLastName)
-                </td>
-                <td>
-                    @{
-            double totalWeight = 0;
-            foreach (var weight in ticket.Baggages)
+        <tbody>
+            @foreach (var ticket in Model)
             {
-                totalWeight += weight.Weight;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => ticket.TicketFirstName)
+                        @Html.DisplayFor(modelItem => ticket.TicketLastName)
+                    </td>
+                    <td>
+                        @{
+                double totalWeight = 0;
+                foreach (var weight in ticket.Baggages)
+                {
+                    totalWeight += weight.Weight;
+                }
+                        }
+                        @totalWeight
+                    </td>
+                    <td>
+                        @{totalcharge += ticket.BaggageCharge;}
+                        @ticket.BaggageCharge
+                    </td>
+                    <td>
+                        @Html.ActionLink("Add Baggage", "AddBaggage", new { id = ticket.TicketId })
+                    </td>
+                </tr>
             }
-                    }
-                    @totalWeight
-                </td>
-                <td>
-                    @{totalcharge += ticket.BaggageCharge;}
-                    @ticket.BaggageCharge
-                </td>
-                <td>
-                    @Html.ActionLink("Add Baggage", "AddBaggage", new { id = ticket.TicketId })
-                </td>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="2">Total Charge</th>
+                <th colspan="2">@totalcharge</th>
             </tr>
-        }
-
+        </tfoot>
     </table>
-        
-        <b>Total Charge:</b> @totalcharge
-        <p>
-            <input class="btn btn-success btn-sm" type="submit" value="Finish">
-        </p>
     
+    <div class="form-group">
+        <div class="col-md-12">
+            <input class="btn btn-success btn-sm" type="submit" value="Finish">
+        </div>
+    </div>    
 }

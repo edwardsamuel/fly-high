@@ -54,14 +54,6 @@ namespace FlyHigh.Models
             }
         }
 
-        public virtual TimeSpan ParkingDuration
-        {
-            get
-            {
-                return (ArrivalTime - DepartureTime);
-            }
-        }
-
         public virtual Flight Flight { get; set; }
         public virtual ICollection<PilotSchedule> PilotSchedules { get; set; }
         public virtual Plane Plane { get; set; }
