@@ -405,11 +405,6 @@
     <Content Include="Views\Pilot\Create.cshtml" />
     <Content Include="Views\Pilot\Edit.cshtml" />
     <Content Include="Views\Pilot\Delete.cshtml" />
-    <Content Include="Views\PilotSchedule\Index.cshtml" />
-    <Content Include="Views\PilotSchedule\Details.cshtml" />
-    <Content Include="Views\PilotSchedule\Create.cshtml" />
-    <Content Include="Views\PilotSchedule\Edit.cshtml" />
-    <Content Include="Views\PilotSchedule\Delete.cshtml" />
     <Content Include="Views\CheckIn\Index.cshtml" />
     <Content Include="Views\CheckIn\CheckIn.cshtml" />
     <Content Include="Views\CheckIn\FormResult.cshtml" />
@@ -420,11 +415,6 @@
     <Content Include="Views\Steward\Create.cshtml" />
     <Content Include="Views\Steward\Edit.cshtml" />
     <Content Include="Views\Steward\Delete.cshtml" />
-    <Content Include="Views\StewardSchedule\Index.cshtml" />
-    <Content Include="Views\StewardSchedule\Details.cshtml" />
-    <Content Include="Views\StewardSchedule\Create.cshtml" />
-    <Content Include="Views\StewardSchedule\Edit.cshtml" />
-    <Content Include="Views\StewardSchedule\Delete.cshtml" />
     <Content Include="Views\CheckIn\AddBaggage.cshtml" />
     <Content Include="Views\CheckIn\Baggage.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
@@ -435,6 +425,16 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\PilotSchedule\Index.cshtml" />
+    <Content Include="Views\PilotSchedule\Details.cshtml" />
+    <Content Include="Views\PilotSchedule\Create.cshtml" />
+    <Content Include="Views\PilotSchedule\Edit.cshtml" />
+    <Content Include="Views\PilotSchedule\Delete.cshtml" />
+    <Content Include="Views\StewardSchedule\Index.cshtml" />
+    <Content Include="Views\StewardSchedule\Details.cshtml" />
+    <Content Include="Views\StewardSchedule\Create.cshtml" />
+    <Content Include="Views\StewardSchedule\Edit.cshtml" />
+    <Content Include="Views\StewardSchedule\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

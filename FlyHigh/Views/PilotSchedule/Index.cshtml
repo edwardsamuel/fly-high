@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.IsHead)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { pilotId = item.PilotId, scheduleId = item.ScheduleId }, new {@class="btn btn-default btn-xs" })
-            @Html.ActionLink("Details", "Details", new { id = item.PilotId }, new {@class="btn btn-primary btn-xs" })
-            @Html.ActionLink("Delete", "Delete", new { id = item.PilotId }, new {@class="btn btn-danger btn-xs" })
+            @Html.ActionLink("Edit", "Edit", new { id=item.PilotScheduleId }, new {@class="btn btn-default btn-xs" })
+            @Html.ActionLink("Details", "Details", new { id=item.PilotScheduleId }, new {@class="btn btn-primary btn-xs" })
+            @Html.ActionLink("Delete", "Delete", new { id=item.PilotScheduleId }, new {@class="btn btn-danger btn-xs" })
         </td>
     </tr>
 }

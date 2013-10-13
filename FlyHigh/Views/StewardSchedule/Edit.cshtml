@@ -22,7 +22,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ScheduleId, "Schedule", new { @class = "col-md-2 control-label" })
+            @Html.LabelFor(model => model.ScheduleId, "Schedule Id", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.DropDownList("ScheduleId", ViewBag.ScheduleId as SelectList, new { @class = "form-control input-sm", onchange = "FetchPilots();" })
                 @Html.ValidationMessageFor(model => model.ScheduleId)
