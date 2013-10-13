@@ -9,31 +9,19 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-<<<<<<< HEAD
-        <legend>PilotSchedule</legend>
-
-        @Html.HiddenFor(model => model.PilotScheduleId)
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PilotId, "Pilot")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("PilotId", String.Empty)
-            @Html.ValidationMessageFor(model => model.PilotId)
-=======
         <legend>Edit Pilot Schedule</legend>
 
+        @Html.HiddenFor(model => model.PilotScheduleId)
         <div class="form-group">
             @Html.LabelFor(model => model.PilotId, "Pilot", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.DropDownList("PilotId", ViewBag.PilotName as SelectList, new { @class = "form-control input-sm" })
                 @Html.ValidationMessageFor(model => model.PilotId)
             </div>
->>>>>>> 26ee06652ae592251d0977ebbd29be3908d00a2b
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ScheduleId, "Schedule", new { @class = "col-md-2 control-label" })
+            @Html.LabelFor(model => model.ScheduleId, "Schedule Id", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.DropDownList("ScheduleId", ViewBag.ScheduleId as SelectList, new { @class = "form-control input-sm", onchange = "FetchPilots();" })
                 @Html.ValidationMessageFor(model => model.ScheduleId)
@@ -56,7 +44,6 @@
                 @Html.ActionLink("Back to List", "Index", "PilotSchedule", new { @class = "btn btn-default btn-sm" })
             </div>
         </div>
-
     </fieldset>
 }
 

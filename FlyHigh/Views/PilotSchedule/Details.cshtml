@@ -36,12 +36,6 @@
     </div>
 </fieldset>
 <p>
-<<<<<<< HEAD
-    @Html.ActionLink("Edit", "Edit", new { id=Model.PilotScheduleId }) |
-    @Html.ActionLink("Back to List", "Index")
-=======
-    <div class="row"></div>
-    @Html.ActionLink("Edit", "Edit", "PilotSchedule", new { pilotId = Model.PilotId, scheduleId = Model.ScheduleId }, new { @class = "btn btn-primary btn-sm" })
-    @Html.ActionLink("Back to List", "Index", "PilotSchedule", new { @class = "btn btn-default btn-sm" })
->>>>>>> 26ee06652ae592251d0977ebbd29be3908d00a2b
+    @Html.ActionLink("Edit", "Edit", new { id=Model.PilotScheduleId }, new { @class = "btn btn-primary btn-sm" })
+    @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-default btn-sm" })
 </p>

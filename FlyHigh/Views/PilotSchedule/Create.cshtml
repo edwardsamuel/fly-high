@@ -11,37 +11,18 @@
     <fieldset>
         <legend>Create Pilot Schedule</legend>
 
-<<<<<<< HEAD
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ScheduleId, "Schedule")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("ScheduleId", ViewBag.ScheduleId as SelectList, "Select...", new { onchange = "FetchPilots();" })
-            @*@Html.ValidationMessageFor(model => model.ScheduleId)*@
-        </div>
-
-        <p data-bind="visible: pilots().length > 0">
-            <b>Pilot</b>
-            <select id="PilotId" name="PilotId" data-bind="options: pilots, optionsText: 'PilotName', optionsValue: 'PilotId', optionsCaption: 'Select...'"></select>
-        </p>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.IsHead)
-=======
         <div class="form-group">
             @Html.LabelFor(model => model.ScheduleId, "Schedule", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.DropDownList("ScheduleId", ViewBag.ScheduleId as SelectList, new { @class = "form-control input-sm", onchange = "FetchPilots();" })
+                @Html.DropDownList("ScheduleId", ViewBag.ScheduleId as SelectList, "Select...", new { @class = "form-control input-sm", onchange = "FetchPilots();" })
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" data-bind="visible: pilots().length > 0">
             @Html.LabelFor(model => model.Pilot.PilotName, "Pilot Name", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.DropDownList("PilotId", ViewBag.PilotName as SelectList, new { @class = "form-control input-sm" })
-                @Html.ValidationMessageFor(model => model.Pilot.PilotName)
+                <select class = "form-control input-sm" id="PilotId" name="PilotId" data-bind="options: pilots, optionsText: 'PilotName', optionsValue: 'PilotId', optionsCaption: 'Select...'"></select>
             </div>
->>>>>>> 26ee06652ae592251d0977ebbd29be3908d00a2b
         </div>
 
         <div class="form-group">
