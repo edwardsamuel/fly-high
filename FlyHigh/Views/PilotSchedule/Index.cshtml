@@ -4,12 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Pilot Schedule</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "PilotSchedule", new { @class="btn btn-success btn-xs"})
 </p>
-<table>
+<table class="table table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Pilot.PilotName)
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.IsHead)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { pilotId = item.PilotId, scheduleId = item.ScheduleId /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { id=item.PilotScheduleId }, new {@class="btn btn-default btn-xs" })
+            @Html.ActionLink("Details", "Details", new { id=item.PilotScheduleId }, new {@class="btn btn-primary btn-xs" })
+            @Html.ActionLink("Delete", "Delete", new { id=item.PilotScheduleId }, new {@class="btn btn-danger btn-xs" })
         </td>
     </tr>
 }

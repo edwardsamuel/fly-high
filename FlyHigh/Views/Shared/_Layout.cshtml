@@ -6,44 +6,32 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/bootstrap")
-    @Scripts.Render("~/bundles/knockout")
+    @RenderSection("featured", required: false)
 </head>
 <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Erlangga Airlines</a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Flight", "Index", "Flight")</li>
-                    <li>@Html.ActionLink("Schedule", "Index", "Schedule")</li>
-                    <li>@Html.ActionLink("Parking", "Index", "Parking")</li>
-                    
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
-            <!--
-                    @Html.Partial("_LoginPartial")
-                -->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Erlangga Airlines</a>
         </div>
-    </div>
+        <div class="collapse navbar-collapse">           
+            @Html.Partial("_MenuBarPartial")
+            @Html.Partial("_LoginPartial")
+        </div>
+    </nav>
 
-    <div class="container" style="padding-top: 80px">
-        @RenderSection("featured", required: false)
+    <div class="container">
         @RenderBody()
     </div>
-    <!-- /.container -->
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/knockout")
     @RenderSection("scripts", required: false)
 </body>
 </html>

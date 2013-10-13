@@ -11,6 +11,7 @@ namespace FlyHigh.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Pilot
     {
@@ -18,8 +19,11 @@ namespace FlyHigh.Models
         {
             this.PilotSchedules = new HashSet<PilotSchedule>();
         }
-    
+
+        [Display(Name = "Pilot Id")]
         public int PilotId { get; set; }
+
+        [Display(Name = "Pilot Name")]
         public string PilotName { get; set; }
     
         public virtual ICollection<PilotSchedule> PilotSchedules { get; set; }

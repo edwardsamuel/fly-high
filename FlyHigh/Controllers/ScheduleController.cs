@@ -90,6 +90,7 @@ namespace FlyHigh.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.FlightId = new SelectList(db.Flights, "FlightId", "FlightId", schedule.FlightId);
             ViewBag.PlaneId = new SelectList(db.Planes, "PlaneId", "PlaneType", schedule.PlaneId);
             return View(schedule);

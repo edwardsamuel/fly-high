@@ -11,12 +11,15 @@ namespace FlyHigh.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class PilotSchedule
     {
         public int PilotScheduleId { get; set; }
         public int PilotId { get; set; }
         public long ScheduleId { get; set; }
+
+        [Display(Name = "Pilot Captain")]
         public bool IsHead { get; set; }
     
         public virtual Pilot Pilot { get; set; }

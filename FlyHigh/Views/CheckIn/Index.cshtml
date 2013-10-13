@@ -2,24 +2,15 @@
     ViewBag.Title = "Index";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index", "CheckIn", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
 {
     @Html.ValidationSummary(true)
 
-        <table>
-            <tr>
-                <th>
-                    Booking Id
-                </th>
-                <td>
-                    @Html.TextBox("id")
-                </td>
-            </tr>
-        </table>
-
-        <p>
-            <input type="submit" value="Berikutnya" />
-        </p>
+    <div class="form-group">
+        <label>Booking Id</label>
+        <input class="form-control input-sm" id="id" name="id" type="text" value="" placeholder="Enter Booking ID">
+    </div>
+    <input class="btn btn-primary btn-sm" type="submit" value="Next"/>    
 }
 
 

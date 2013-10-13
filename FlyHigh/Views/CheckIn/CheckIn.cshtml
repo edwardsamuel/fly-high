@@ -10,54 +10,52 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Flight</legend>
+        <legend>Check In</legend>
 
         @Html.HiddenFor(model => model.booking.BookingId)
-        <table>
+
+        <div class="form-group">
+            <div class="col-md-2">
+                <b>@Html.DisplayNameFor(model => model.booking.BookingIdType)</b>
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.booking.BookingIdType)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2">
+                <b>@Html.DisplayNameFor(model => model.booking.BookingIdNumber)</b>
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.booking.BookingIdNumber)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2">
+                <b>@Html.DisplayNameFor(model => model.booking.BookingFirstName)</b>
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.booking.BookingFirstName)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2">
+                <b>@Html.DisplayNameFor(model => model.booking.BookingTimestamp)</b>
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.booking.BookingTimestamp)
+            </div>
+        </div>
+        <div class="row">
+        </div>
+        <div class="row"></div>
+        <h4>Passenger</h4>
+        <table class="table table-hover">
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.booking.BookingIdType)
-                </th>
-                <td>
-                    @Html.DisplayFor(model => model.booking.BookingIdType)
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.booking.BookingIdNumber)
-                </th>
-                <td>
-                    @Html.DisplayFor(model => model.booking.BookingIdNumber)
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.booking.BookingFirstName)
-                </th>
-                <td>@Html.DisplayFor(model => model.booking.BookingFirstName)
-                </td>
-            </tr>
-            <tr>
-                <th>@Html.DisplayNameFor(model => model.booking.BookingTimestamp)
-                </th>
-                <td>@Html.DisplayFor(model => model.booking.BookingTimestamp)
-                </td>
-            </tr>
-            <tr>
-                <th>Peserta
-                </th>
-            </tr>
-        </table>
-        <table>
-            <tr>
-                <th>Nama
-                </th>
-                <th>Id Type
-                </th>
-                <th>Id Number
-                </th>
-                <th>Infant
-                </th>
+                <th>Name</th>
+                <th>Id Type</th>
+                <th>Id Number</th>
+                <th>Infant</th>
             </tr>
 
             @foreach (var item in Model.booking.Tickets)
@@ -78,15 +76,15 @@
                         @Html.DisplayFor(modelItem => item.TicketIdNumber)
                     </td>
                     <td>
-                        @if(item.IsInfant == false)
-                          {
-                           <p>Dewasa</p>
-                          }
-                          else
-                          {
-                           <p>Infant</p>
-                          }
-                        
+                        @if (item.IsInfant == false)
+                        {
+                            <p>Adult</p>
+                        }
+                        else
+                        {
+                            <p>Infant</p>
+                        }
+
                     </td>
                 </tr>
             }
@@ -101,7 +99,7 @@
         </div>*@
 
         <p>
-            <input type="submit" value="Check In" />
+            <input class="btn btn-primary btn-sm" type="submit" value="Check In" />
         </p>
     </fieldset>
 }

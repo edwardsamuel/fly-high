@@ -4,33 +4,38 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <fieldset>
-    <legend>PilotSchedule</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Pilot.PilotName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Pilot.PilotName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Schedule.ScheduleId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Schedule.ScheduleId)
+    <legend>Pilot Schedule Details</legend>
+    <div class="row">
+        <div class="col-md-2">
+            <b>@Html.DisplayNameFor(model => model.Pilot.PilotName)</b>
+        </div>
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.Pilot.PilotName)
+        </div>
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.IsHead)
+    <div class="row">
+        <div class="col-md-2">
+            <b>@Html.DisplayNameFor(model => model.Schedule.ScheduleId)</b>
+        </div>
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.Schedule.ScheduleId)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IsHead)
+
+    <div class="row">
+        <div class="col-md-2">
+            <b>@Html.DisplayNameFor(model => model.IsHead)</b>
+        </div>
+        <div class="col-md-8">
+            <div class="checkbox">
+                @Html.DisplayFor(model => model.IsHead)
+            </div>
+        </div>
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id=Model.PilotScheduleId }, new { @class = "btn btn-primary btn-sm" })
+    @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-default btn-sm" })
 </p>

@@ -9,6 +9,7 @@ using System.Data.Entity;
 
 namespace FlyHigh.Controllers
 {
+    [Authorize(Roles = "Teller")]
     public class CheckInController : Controller
     {
         private static double BAGGAGE_CHARGE_MULTIPLIER = 50000;

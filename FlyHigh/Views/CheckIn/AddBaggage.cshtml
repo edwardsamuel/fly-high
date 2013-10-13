@@ -4,32 +4,32 @@
     ViewBag.Title = "AddBaggage";
 }
 
-<h2>AddBaggage</h2>
 
-
-
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("AddBaggage", "CheckIn", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
+    @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.TicketId)
-<table>
-    <tr>
-        <th>
-            Baggage
-        </th>
-        <th>
-            Weight
-        </th>
-    </tr>
-        <tr>
-            <td>
-            </td>
-            <td>
-                @Html.EditorFor(model => model.Weight)
-            </td>
-        </tr>
+    <legend>Add Baggage</legend>
     
-</table>
+    <div class="form-group">
+        <div class="col-md-2">
+            <label>Baggage</label>
+        </div>
+        <div class="col-md-10">
+            <label>Weight</label>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-md-2">
+            Baggage #1              
+        </div>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Weight, new { @class = "form-control input-sm" })
+        </div>
+    </div>    
 
-<input type="submit" value="Submit" />
+    <p>
+        <input class="btn btn-success btn-sm" type="submit" value="Submit">
+    </p>
 } 

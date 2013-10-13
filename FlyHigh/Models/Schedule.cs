@@ -11,6 +11,7 @@ namespace FlyHigh.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Schedule
     {
@@ -20,12 +21,47 @@ namespace FlyHigh.Models
             this.StewardSchedules = new HashSet<StewardSchedule>();
             this.TicketInstances = new HashSet<TicketInstance>();
         }
-    
+
+        [Display(Name = "Schedule Id")]
         public long ScheduleId { get; set; }
         public int FlightId { get; set; }
         public System.DateTime Date { get; set; }
         public int PlaneId { get; set; }
     
+        public virtual System.DateTime DepartureTime
+        {
+            get
+            {
+                if (Flight != null)
+                {
+                    return new DateTime(Date.Year, Date.Month, Date.Day, Flight.Departure.Hours, Flight.Departure.Minutes,
+                        Flight.Departure.Seconds);
+                }
+                return Date;
+            }
+        }
+
+        public virtual System.DateTime ArrivalTime
+        {
+            get
+            {
+                if (Flight != null)
+                {
+                    DateTime d = DepartureTime.Add(TimeSpan.FromMinutes(Flight.Duration));
+                    return d;
+                }
+                return Date;
+            }
+        }
+
+        public virtual TimeSpan ParkingDuration
+        {
+            get
+            {
+                return (ArrivalTime - DepartureTime);
+            }
+        }
+
         public virtual Flight Flight { get; set; }
         public virtual ICollection<PilotSchedule> PilotSchedules { get; set; }
         public virtual Plane Plane { get; set; }
