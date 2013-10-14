@@ -9,6 +9,7 @@ using FlyHigh.Models;
 
 namespace FlyHigh.Controllers
 {
+    [Authorize]
     public class ScheduleController : Controller
     {
         private ErlanggaEntities db = new ErlanggaEntities();
@@ -38,6 +39,7 @@ namespace FlyHigh.Controllers
         //
         // GET: /Schedule/Create
 
+        [Authorize(Roles = "Scheduler")]
         public ActionResult Create()
         {
             ViewBag.FlightId = new SelectList(db.Flights, "FlightId", "FlightId");
@@ -49,6 +51,7 @@ namespace FlyHigh.Controllers
         // POST: /Schedule/Create
 
         [HttpPost]
+        [Authorize(Roles = "Scheduler")]
         public ActionResult Create(Schedule schedule)
         {
             if (ModelState.IsValid)
@@ -66,6 +69,7 @@ namespace FlyHigh.Controllers
         //
         // GET: /Schedule/Edit/5
 
+        [Authorize(Roles = "Scheduler")]
         public ActionResult Edit(long id = 0)
         {
             Schedule schedule = db.Schedules.Find(id);
@@ -82,6 +86,7 @@ namespace FlyHigh.Controllers
         // POST: /Schedule/Edit/5
 
         [HttpPost]
+        [Authorize(Roles = "Scheduler")]
         public ActionResult Edit(Schedule schedule)
         {
             if (ModelState.IsValid)
@@ -99,6 +104,7 @@ namespace FlyHigh.Controllers
         //
         // GET: /Schedule/Delete/5
 
+        [Authorize(Roles = "Scheduler")]
         public ActionResult Delete(long id = 0)
         {
             Schedule schedule = db.Schedules.Find(id);
@@ -113,6 +119,7 @@ namespace FlyHigh.Controllers
         // POST: /Schedule/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Scheduler")]
         public ActionResult DeleteConfirmed(long id)
         {
             Schedule schedule = db.Schedules.Find(id);

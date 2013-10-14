@@ -27,7 +27,8 @@ namespace FlyHigh.Models
         public int FlightId { get; set; }
         public System.DateTime Date { get; set; }
         public int PlaneId { get; set; }
-    
+
+        [Display(Name = "Departure Time")]
         public virtual System.DateTime DepartureTime
         {
             get
@@ -41,6 +42,7 @@ namespace FlyHigh.Models
             }
         }
 
+        [Display(Name = "Arrival Time")]
         public virtual System.DateTime ArrivalTime
         {
             get

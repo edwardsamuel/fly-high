@@ -4,6 +4,8 @@
     ViewBag.Title = "Edit";
 }
 
+<h1>Pilot Schedule</h1>
+
 @using (Html.BeginForm("Edit", "PilotSchedule", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.ValidationSummary(true)
@@ -42,7 +44,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input class="btn btn-success btn-sm" type="submit" value="Save">
-                @Html.ActionLink("Back to List", "Index", "PilotSchedule", new { @class = "btn btn-default btn-sm" })
+                @Html.ActionLink("Back to List", "Index", "PilotSchedule", null, new { @class = "btn btn-default btn-sm" })
             </div>
         </div>
     </fieldset>

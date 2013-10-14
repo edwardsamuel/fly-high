@@ -9,6 +9,7 @@ using FlyHigh.Models;
 
 namespace FlyHigh.Controllers
 {
+    [Authorize(Roles = "Human Resource")]
     public class PilotScheduleController : Controller
     {
         private ErlanggaEntities db = new ErlanggaEntities();
@@ -18,7 +19,7 @@ namespace FlyHigh.Controllers
 
         public ActionResult Index()
         {
-            var pilotschedules = db.PilotSchedules.Include(p => p.Pilot).Include(p => p.Schedule);
+            var pilotschedules = db.PilotSchedules.Include(p => p.Pilot).Include(p => p.Schedule).Include(p => p.Schedule.Flight);
             return View(pilotschedules.ToList());
         }
 

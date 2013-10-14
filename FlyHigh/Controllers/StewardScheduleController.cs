@@ -9,6 +9,7 @@ using FlyHigh.Models;
 
 namespace FlyHigh.Controllers
 {
+    [Authorize(Roles = "Human Resource")]
     public class StewardScheduleController : Controller
     {
         private ErlanggaEntities db = new ErlanggaEntities();

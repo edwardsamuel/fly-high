@@ -4,42 +4,71 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Steward Schedule</h2>
+<h1>Steward Schedule</h1>
 
 <p>
     @Html.ActionLink("Create New", "Create", "StewardSchedule", new { @class="btn btn-success btn-xs"})
 </p>
-<table class="table table-hover">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Steward.StewardName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Schedule.ScheduleId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsHead)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Steward.StewardName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Schedule.ScheduleId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsHead)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.StewardScheduleId }, new {@class="btn btn-default btn-xs" })
-            @Html.ActionLink("Details", "Details", new { id=item.StewardScheduleId }, new {@class="btn btn-primary btn-xs" })
-            @Html.ActionLink("Delete", "Delete", new { id=item.StewardScheduleId }, new {@class="btn btn-danger btn-xs" })
-        </td>
-    </tr>
-}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Steward.StewardName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedule.ScheduleId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedule.Flight.FromAirport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedule.Flight.ToAirport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedule.DepartureTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedule.ArrivalTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsHead)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Steward.StewardName)
+                </td>
+                <td>
+                    @Html.ActionLink(item.Schedule.ScheduleId.ToString(), "Details", "Schedule", new { id = item.Schedule.ScheduleId }, null)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Schedule.Flight.FromAirport.AirportCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Schedule.Flight.ToAirport.AirportCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Schedule.DepartureTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Schedule.ArrivalTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsHead)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.StewardScheduleId }, new { @class = "btn btn-default btn-xs" })
+                    @Html.ActionLink("Details", "Details", new { id = item.StewardScheduleId }, new { @class = "btn btn-primary btn-xs" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.StewardScheduleId }, new { @class = "btn btn-danger btn-xs" })
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>

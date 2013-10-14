@@ -14,31 +14,21 @@
         <legend>Add Baggage</legend>
 
         <div class="form-group">
-            <div class="col-md-2">
-                <label>Baggage</label>
-            </div>
+            @Html.LabelFor(model => model.Weight, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                <label>Weight</label>
+                <div class="input-group">
+                    @Html.TextBoxFor(model => model.Weight, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Weight)
+                    <span class="input-group-addon">kg</span>
+                </div>
             </div>
+
+
+
         </div>
 
         <div class="form-group">
-            <div class="col-md-2">
-                Baggage #1              
-            </div>
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Weight, new { @class = "form-control input-sm" })
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <div class="col-md-12">
-                &nbsp;
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <div class="col-md-12">
+            <div class="col-md-offset-2 col-md-10">
                 <input class="btn btn-success btn-sm" type="submit" value="Submit">
             </div>
         </div>

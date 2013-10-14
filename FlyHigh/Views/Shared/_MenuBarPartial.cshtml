@@ -6,11 +6,12 @@
         {
         <li>@Html.ActionLink("Check In", "Index", "CheckIn")</li>
         }
-
-        if (Roles.IsUserInRole("Scheduler"))
-        {
+        
         <li>@Html.ActionLink("Flight", "Index", "Flight")</li>
         <li>@Html.ActionLink("Schedule", "Index", "Schedule")</li>
+        
+        if (Roles.IsUserInRole("Scheduler"))
+        {
         <li>@Html.ActionLink("Parking", "Index", "Parking")</li>
         }
 

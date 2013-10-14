@@ -4,6 +4,8 @@
     ViewBag.Title = "Create";
 }
 
+<h1>Pilot Schedule</h1>
+
 @using (Html.BeginForm("Create", "PilotSchedule", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form", @class = "form-horizontal" }))
 {
     @Html.ValidationSummary(true)

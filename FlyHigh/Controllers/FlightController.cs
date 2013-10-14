@@ -9,6 +9,7 @@ using FlyHigh.Models;
 
 namespace FlyHigh.Controllers
 {
+    [Authorize]
     public class FlightController : Controller
     {
         private ErlanggaEntities db = new ErlanggaEntities();
@@ -38,6 +39,7 @@ namespace FlyHigh.Controllers
         //
         // GET: /Flight/Create
 
+        [Authorize(Roles = "Scheduler")]
         public ActionResult Create()
         {
             ViewBag.FromAirportId = new SelectList(db.Airports, "AirportId", "AirportCode");
@@ -49,6 +51,7 @@ namespace FlyHigh.Controllers
         // POST: /Flight/Create
 
         [HttpPost]
+        [Authorize(Roles = "Scheduler")]
         public ActionResult Create(Flight flight)
         {
             if (ModelState.IsValid)
@@ -66,6 +69,7 @@ namespace FlyHigh.Controllers
         //
         // GET: /Flight/Edit/5
 
+        [Authorize(Roles = "Scheduler")]
         public ActionResult Edit(int id = 0)
         {
             Flight flight = db.Flights.Find(id);
@@ -87,6 +91,7 @@ namespace FlyHigh.Controllers
         // POST: /Flight/Edit/5
 
         [HttpPost]
+        [Authorize(Roles = "Scheduler")]
         public ActionResult Edit(Flight flight)
         {
             if (ModelState.IsValid)
@@ -103,6 +108,7 @@ namespace FlyHigh.Controllers
         //
         // GET: /Flight/Delete/5
 
+        [Authorize(Roles = "Scheduler")]
         public ActionResult Delete(int id = 0)
         {
             Flight flight = db.Flights.Find(id);
@@ -117,6 +123,7 @@ namespace FlyHigh.Controllers
         // POST: /Flight/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Scheduler")]
         public ActionResult DeleteConfirmed(int id)
         {
             Flight flight = db.Flights.Find(id);

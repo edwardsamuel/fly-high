@@ -9,56 +9,65 @@
 @using (Html.BeginForm(Html.BeginForm("Success", "CheckIn", null, FormMethod.Post, new { @class = "form-horizontal", role = "form" })))
 {
     @Html.ValidationSummary(true)
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Total Weight</th>
-                <th>Baggage Charge</th>
-                <th></th>
-            </tr>
-        </thead>
-        @{decimal totalcharge = 0;}
 
-        <tbody>
-            @foreach (var ticket in Model)
-            {
+    <fieldset>
+        <legend>Flight</legend>
+        <div>Free Baggage: @ViewBag.maxWeight kg/person</div>
+        <table class="table table-hover">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => ticket.TicketFirstName)
-                        @Html.DisplayFor(modelItem => ticket.TicketLastName)
-                    </td>
-                    <td>
-                        @{
-                double totalWeight = 0;
-                foreach (var weight in ticket.Baggages)
-                {
-                    totalWeight += weight.Weight;
-                }
-                        }
-                        @totalWeight
-                    </td>
-                    <td>
-                        @{totalcharge += ticket.BaggageCharge;}
-                        @ticket.BaggageCharge
-                    </td>
-                    <td>
-                        @Html.ActionLink("Add Baggage", "AddBaggage", new { id = ticket.TicketId })
-                    </td>
+                    <th>Nama
+                    </th>
+                    <th>Total Weight
+                    </th>
+                    <th>Baggage Charge
+                    </th>
+                    <th>Bagasi
+                    </th>
                 </tr>
-            }
-        </tbody>
-        <tfoot>
-            <tr>
-                <th colspan="2">Total Charge</th>
-                <th colspan="2">@totalcharge</th>
-            </tr>
-        </tfoot>
-    </table>
-    
-    <div class="form-group">
-        <div class="col-md-12">
-            <input class="btn btn-success btn-sm" type="submit" value="Finish">
+            </thead>
+            @{decimal totalcharge = 0;}
+
+            <tbody>
+                @foreach (var ticket in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => ticket.TicketFirstName)
+                            @Html.DisplayFor(modelItem => ticket.TicketLastName)
+                        </td>
+                        <td>
+                            @{
+                    double totalWeight = 0;
+                    foreach (var weight in ticket.Baggages)
+                    {
+                        totalWeight += weight.Weight;
+                    }
+                            }
+                            @totalWeight
+                        </td>
+                        <td>
+                            @{totalcharge += ticket.BaggageCharge;}
+                            @ticket.BaggageCharge
+                        </td>
+                        <td>
+                            @Html.ActionLink("Add Baggage", "AddBaggage", new { id = ticket.TicketId })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="2">Total Charge</th>
+                    <th colspan="2">@totalcharge</th>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <input class="btn btn-success btn-sm" type="submit" value="Finish">
+            </div>
         </div>
-    </div>    
+    </fieldset>
 }

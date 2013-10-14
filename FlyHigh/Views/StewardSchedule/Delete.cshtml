@@ -4,43 +4,96 @@
     ViewBag.Title = "Delete";
 }
 
-<fieldset>
-    <legend>Delete Steward Schedule</legend>
-    <h2>Are you sure you want to delete this?</h2>
+<h1>Steward Schedule</h1>
 
-    <div class="row">
-        <div class="col-md-2">
-            <b>@Html.DisplayNameFor(model => model.Steward.StewardName)</b>
-        </div>
-        <div class="col-md-8">
-            @Html.DisplayFor(model => model.Steward.StewardName)
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-2">
-            <b>@Html.DisplayNameFor(model => model.Schedule.ScheduleId)</b>
-        </div>
-        <div class="col-md-8">
-            @Html.DisplayFor(model => model.Schedule.ScheduleId)
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-2">
-            <b>@Html.DisplayNameFor(model => model.IsHead)</b>
-        </div>
-        <div class="col-md-8">
-                @Html.DisplayFor(model => model.IsHead)
-        </div>
-    </div>
-
-</fieldset>
 @using (Html.BeginForm())
 {
-    <p>
-        <div class="row"></div>
-        <input class="btn btn-danger btn-sm" type="submit" value="Delete" />
-        @Html.ActionLink("Back to List", "Index", "StewardSchedule", new { @class = "btn btn-default btn-sm" })
-    </p>
+    <fieldset>
+        <legend>Delete Steward Schedule</legend>
+        <h2 class="text-danger">Are you sure you want to delete this?</h2>
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@Html.DisplayNameFor(model => model.Steward.StewardName)</strong>
+            </div>
+            <div class="col-md-8">
+                @Html.DisplayFor(model => model.Steward.StewardName)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@Html.DisplayNameFor(model => model.Schedule.ScheduleId)</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.ActionLink(Model.Schedule.ScheduleId.ToString(), "Details", "Schedule", new { id = Model.ScheduleId }, null)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@Html.DisplayNameFor(model => model.Schedule.Flight.FlightId)</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.ActionLink(Model.Schedule.FlightId.ToString(), "Details", "Flight", new { id = Model.Schedule.FlightId }, null)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@Html.DisplayNameFor(model => model.Schedule.Flight.FromAirport)</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Schedule.Flight.FromAirport.AirportCode)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@Html.DisplayNameFor(model => model.Schedule.Flight.ToAirport)</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Schedule.Flight.ToAirport.AirportCode)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@Html.DisplayNameFor(model => model.Schedule.DepartureTime)</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Schedule.DepartureTime)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@Html.DisplayNameFor(model => model.Schedule.ArrivalTime)</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Schedule.ArrivalTime)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@Html.DisplayNameFor(model => model.IsHead)</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.IsHead)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                &nbsp;
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <input class="btn btn-danger btn-sm" type="submit" value="Delete" />
+                @Html.ActionLink("Back to List", "Index", "StewardSchedule", null, new { @class = "btn btn-default btn-sm" })
+            </div>
+        </div>
+    </fieldset>
 }
