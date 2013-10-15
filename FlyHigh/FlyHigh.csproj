@@ -157,22 +157,17 @@
     <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CheckInController.cs" />
     <Compile Include="Controllers\FlightController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ParkingController.cs" />
-    <Compile Include="Controllers\PilotController.cs" />
     <Compile Include="Controllers\PilotScheduleController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
-    <Compile Include="Controllers\StewardController.cs" />
     <Compile Include="Controllers\StewardScheduleController.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\SimpleMembershipTestDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -327,6 +322,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="FlyHighClassDiagram.cd" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\boostrap-button.js" />
     <Content Include="Scripts\boostrap-carousel.js" />
@@ -396,16 +392,6 @@
     <Content Include="Views\Flight\Create.cshtml" />
     <Content Include="Views\Flight\Edit.cshtml" />
     <Content Include="Views\Flight\Delete.cshtml" />
-    <Content Include="Views\Schedule\Index.cshtml" />
-    <Content Include="Views\Schedule\Details.cshtml" />
-    <Content Include="Views\Schedule\Create.cshtml" />
-    <Content Include="Views\Schedule\Edit.cshtml" />
-    <Content Include="Views\Schedule\Delete.cshtml" />
-    <Content Include="Views\Pilot\Index.cshtml" />
-    <Content Include="Views\Pilot\Details.cshtml" />
-    <Content Include="Views\Pilot\Create.cshtml" />
-    <Content Include="Views\Pilot\Edit.cshtml" />
-    <Content Include="Views\Pilot\Delete.cshtml" />
     <Content Include="Views\CheckIn\Index.cshtml" />
     <Content Include="Views\CheckIn\CheckIn.cshtml" />
     <Content Include="Views\CheckIn\FormResult.cshtml" />

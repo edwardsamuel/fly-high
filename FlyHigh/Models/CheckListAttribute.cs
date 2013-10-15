@@ -9,8 +9,8 @@ namespace FlyHigh.Models
     public class CheckListAttribute : ValidationAttribute
     {
         //private variables to set the validation lenght and whether the lenght is fixed or not. this is set on initialzation by the constructor.
-        int _length;
-        bool _fixed;
+        private int _length;
+        private bool _fixed;
 
         public override bool IsValid(object value)
         {
