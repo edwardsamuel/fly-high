@@ -1,0 +1,101 @@
+﻿@model FlyHigh.Models.Schedule
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h1>Schedule</h1>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Delete Schedule</legend>
+        <h2 class="text-danger">Are you sure you want to delete this?</h2>
+
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@Html.DisplayNameFor(model => model.Flight.FlightId)</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.ActionLink(Model.FlightId.ToString(), "Details", "Flight", new { id = Model.FlightId }, null)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@Html.DisplayNameFor(model => model.Flight.FromAirport)</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Flight.FromAirport.AirportCode)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@Html.DisplayNameFor(model => model.Flight.ToAirport)</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Flight.ToAirport.AirportCode)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@Html.DisplayNameFor(model => model.DepartureTime)</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.DepartureTime)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@Html.DisplayNameFor(model => model.ArrivalTime)</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ArrivalTime)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@Html.DisplayNameFor(model => model.Flight.Duration)</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Flight.Duration) minutes
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@Html.DisplayNameFor(model => model.Plane.PlaneId)</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Plane.PlaneId)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <strong>@Html.DisplayNameFor(model => model.Plane.PlaneType)</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Plane.PlaneType)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                &nbsp;
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <input class="btn btn-danger btn-sm" type="submit" value="Delete" />
+                @Html.ActionLink("Back to List", "Index", "Schedule", new { @class = "btn btn-default btn-sm" })
+            </div>
+        </div>
+
+    </fieldset>
+}

@@ -1,5 +1,4 @@
-﻿using FlyHigh.Filters;
-using FlyHigh.Models;
+﻿using FlyHigh.Models;
 using MySql.Web.Security;
 using System;
 using System.Collections.Generic;
@@ -23,11 +22,9 @@ namespace FlyHigh
         {
             AreaRegistration.RegisterAllAreas();
 
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            AuthConfig.RegisterAuth();
 
             Database.SetInitializer<SimpleMembershipTestDbContext>(null);
             try

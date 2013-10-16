@@ -403,11 +403,6 @@
     <Content Include="Views\CheckIn\FormResult.cshtml" />
     <Content Include="Views\Parking\Index.cshtml" />
     <Content Include="Views\CheckIn\Success.cshtml" />
-    <Content Include="Views\Steward\Index.cshtml" />
-    <Content Include="Views\Steward\Details.cshtml" />
-    <Content Include="Views\Steward\Create.cshtml" />
-    <Content Include="Views\Steward\Edit.cshtml" />
-    <Content Include="Views\Steward\Delete.cshtml" />
     <Content Include="Views\CheckIn\AddBaggage.cshtml" />
     <Content Include="Views\CheckIn\Baggage.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
@@ -429,6 +424,11 @@
     <Content Include="Views\StewardSchedule\Edit.cshtml" />
     <Content Include="Views\StewardSchedule\Delete.cshtml" />
     <Content Include="Views\Parking\Details.cshtml" />
+    <Content Include="Views\Schedule\Create.cshtml" />
+    <Content Include="Views\Schedule\Delete.cshtml" />
+    <Content Include="Views\Schedule\Details.cshtml" />
+    <Content Include="Views\Schedule\Edit.cshtml" />
+    <Content Include="Views\Schedule\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

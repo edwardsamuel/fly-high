@@ -34,9 +34,9 @@
             <div class="col-md-10">
                 <div class="input-group" id="timepicker">
                     @Html.TextBoxFor(model => model.Departure, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Departure)
                     <span class="input-group-addon glyphicon glyphicon-time"></span>
                 </div>
+                @Html.ValidationMessageFor(model => model.Departure)
             </div>
         </div>
 
