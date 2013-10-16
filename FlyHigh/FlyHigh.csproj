@@ -157,22 +157,17 @@
     <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CheckInController.cs" />
     <Compile Include="Controllers\FlightController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ParkingController.cs" />
-    <Compile Include="Controllers\PilotController.cs" />
     <Compile Include="Controllers\PilotScheduleController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
-    <Compile Include="Controllers\StewardController.cs" />
     <Compile Include="Controllers\StewardScheduleController.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\SimpleMembershipTestDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -244,12 +239,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -327,6 +324,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="FlyHighClassDiagram.cd" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\boostrap-button.js" />
     <Content Include="Scripts\boostrap-carousel.js" />
@@ -334,6 +335,7 @@
     <Content Include="Scripts\boostrap-popover.js" />
     <Content Include="Scripts\boostrap-typeahead.js" />
     <Content Include="Scripts\bootstrap-alert.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-dropdown.js" />
     <Content Include="Scripts\bootstrap-modal.js" />
     <Content Include="Scripts\bootstrap-scrollspy.js" />
@@ -396,25 +398,10 @@
     <Content Include="Views\Flight\Create.cshtml" />
     <Content Include="Views\Flight\Edit.cshtml" />
     <Content Include="Views\Flight\Delete.cshtml" />
-    <Content Include="Views\Schedule\Index.cshtml" />
-    <Content Include="Views\Schedule\Details.cshtml" />
-    <Content Include="Views\Schedule\Create.cshtml" />
-    <Content Include="Views\Schedule\Edit.cshtml" />
-    <Content Include="Views\Schedule\Delete.cshtml" />
-    <Content Include="Views\Pilot\Index.cshtml" />
-    <Content Include="Views\Pilot\Details.cshtml" />
-    <Content Include="Views\Pilot\Create.cshtml" />
-    <Content Include="Views\Pilot\Edit.cshtml" />
-    <Content Include="Views\Pilot\Delete.cshtml" />
     <Content Include="Views\CheckIn\Index.cshtml" />
     <Content Include="Views\CheckIn\CheckIn.cshtml" />
     <Content Include="Views\Parking\Index.cshtml" />
     <Content Include="Views\CheckIn\Success.cshtml" />
-    <Content Include="Views\Steward\Index.cshtml" />
-    <Content Include="Views\Steward\Details.cshtml" />
-    <Content Include="Views\Steward\Create.cshtml" />
-    <Content Include="Views\Steward\Edit.cshtml" />
-    <Content Include="Views\Steward\Delete.cshtml" />
     <Content Include="Views\CheckIn\AddBaggage.cshtml" />
     <Content Include="Views\CheckIn\Baggage.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
@@ -436,6 +423,11 @@
     <Content Include="Views\StewardSchedule\Edit.cshtml" />
     <Content Include="Views\StewardSchedule\Delete.cshtml" />
     <Content Include="Views\Parking\Details.cshtml" />
+    <Content Include="Views\Schedule\Create.cshtml" />
+    <Content Include="Views\Schedule\Delete.cshtml" />
+    <Content Include="Views\Schedule\Details.cshtml" />
+    <Content Include="Views\Schedule\Edit.cshtml" />
+    <Content Include="Views\Schedule\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

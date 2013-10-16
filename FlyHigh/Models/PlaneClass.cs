@@ -19,7 +19,7 @@ namespace FlyHigh.Models
         public int ClassId { get; set; }
         public int MaximumPassengers { get; set; }
         public Nullable<double> FreeBaggage { get; set; }
-    
+
         public virtual Class Class { get; set; }
         public virtual Plane Plane { get; set; }
     }

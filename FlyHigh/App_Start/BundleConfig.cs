@@ -20,6 +20,9 @@ namespace FlyHigh
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap-datetimepicker").Include(
+                        "~/Scripts/bootstrap-datetimepicker.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -31,6 +34,7 @@ namespace FlyHigh
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.css"));
+            bundles.Add(new StyleBundle("~/Content/bootstrap-datetimepicker").Include("~/Content/bootstrap-datetimepicker.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

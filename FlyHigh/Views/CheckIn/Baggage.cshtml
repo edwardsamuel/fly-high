@@ -10,7 +10,6 @@
 {
     @Html.ValidationSummary(true)
 
-    @Html.HiddenFor(model => model.ElementAt(0).BookingId)
     <fieldset>
         <legend>Flight</legend>
         <div>Free Baggage: @ViewBag.maxWeight kg/person</div>

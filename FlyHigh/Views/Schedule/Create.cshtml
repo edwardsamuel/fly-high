@@ -24,7 +24,10 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Date, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Date, new { @class = "form-control input-sm" })
+                <div class="input-group" id="timepicker">
+                    @Html.TextBoxFor(model => model.Date, new { @class = "form-control" })
+                    <span class="input-group-addon glyphicon glyphicon-calendar"></span>
+                </div>
                 @Html.ValidationMessageFor(model => model.Date)
             </div>
         </div>
@@ -48,4 +51,11 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $('#timepicker').datetimepicker({
+            format: 'YYYY/MM/ss',
+            pickTime: false
+        });
+    </script>
 }
