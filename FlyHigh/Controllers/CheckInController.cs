@@ -52,7 +52,17 @@ namespace FlyHigh.Controllers
                 foreach (var i in model.DynamicMultiBoxes)
                 {
                     var ticketToUpdate = db.Tickets.Where(ps => ps.TicketId == i).Single();
+
                     ticketToUpdate.CheckIn = DateTime.Now;
+                    db.Entry(ticketToUpdate).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    var scheduleId = db.TicketInstances.Include(ps => ps.Ticket).Where(ps => ps.TicketId == ticketToUpdate.TicketId).FirstOrDefault().ScheduleId;
+                    var maxSeatNumber = db.TicketInstances.Include(ps => ps.Ticket).Where(ps => ps.ScheduleId == scheduleId && ps.Ticket.CheckIn != null).Max(ps => ps.Ticket.SeatNumber).ToString();
+                    
+                    int tempSeatNumber;
+                    Int32.TryParse(maxSeatNumber, out tempSeatNumber);
+                    ticketToUpdate.SeatNumber = (tempSeatNumber + 1).ToString();
                     db.Entry(ticketToUpdate).State = EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -140,7 +150,7 @@ namespace FlyHigh.Controllers
         }
 
         [HttpPost]
-        public ActionResult Success(Baggage baggageToAdd)
+        public ActionResult Success(Ticket baggageToAdd)
         {
             return View("Success");
         }
