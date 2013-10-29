@@ -12,7 +12,7 @@ namespace FlyHigh.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+
     public partial class Flight
     {
         public Flight()
@@ -29,6 +29,18 @@ namespace FlyHigh.Models
 
         [Display(Name = "Price")]
         public decimal BasePrice { get; set; }
+
+        public string FlightInfoDisplay
+        {
+            get
+            {
+                if (FromAirport != null && ToAirport != null)
+                {
+                return FlightId + " (" + FromAirport.AirportCode + " - " + ToAirport.AirportCode + ") [" + Departure + "]";
+                }
+                return null;
+            }
+        }
 
         [Display(Name = "From")]
         public virtual Airport FromAirport { get; set; }

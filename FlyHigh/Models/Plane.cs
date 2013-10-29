@@ -11,7 +11,7 @@ namespace FlyHigh.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Plane
     {
         public Plane()
@@ -19,11 +19,19 @@ namespace FlyHigh.Models
             this.PlaneClasses = new HashSet<PlaneClass>();
             this.Schedules = new HashSet<Schedule>();
         }
-    
+
         public int PlaneId { get; set; }
         public string PlaneType { get; set; }
         public double MaximumWeight { get; set; }
-    
+
+        public string PlaneInfoDisplay
+        {
+            get
+            {
+                return PlaneId + " - " + PlaneType;
+            }
+        }
+
         public virtual ICollection<PlaneClass> PlaneClasses { get; set; }
         public virtual ICollection<Schedule> Schedules { get; set; }
     }

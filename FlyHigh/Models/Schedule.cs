@@ -12,7 +12,7 @@ namespace FlyHigh.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+
     public partial class Schedule
     {
         public Schedule()
@@ -39,6 +39,14 @@ namespace FlyHigh.Models
                         Flight.Departure.Seconds);
                 }
                 return Date;
+            }
+        }
+
+        public string ScheduleInfoDisplay
+        {
+            get
+            {
+                return ScheduleId + " (" + Flight.FromAirport.AirportCode + " - " + Flight.ToAirport.AirportCode + ") [" + DepartureTime + "]";
             }
         }
 

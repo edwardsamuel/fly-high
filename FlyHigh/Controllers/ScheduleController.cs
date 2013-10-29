@@ -42,8 +42,8 @@ namespace FlyHigh.Controllers
         [Authorize(Roles = "Scheduler")]
         public ActionResult Create()
         {
-            ViewBag.FlightId = new SelectList(db.Flights, "FlightId", "FlightId");
-            ViewBag.PlaneId = new SelectList(db.Planes, "PlaneId", "PlaneId");
+            ViewBag.FlightId = new SelectList(db.Flights.Include(f => f.FromAirport).Include(f => f.ToAirport).OrderBy(f => f.FlightId), "FlightId", "FlightInfoDisplay");
+            ViewBag.PlaneId = new SelectList(db.Planes, "PlaneId", "PlaneInfoDisplay");
             return View();
         }
 
@@ -77,8 +77,8 @@ namespace FlyHigh.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FlightId = new SelectList(db.Flights, "FlightId", "FlightId", schedule.FlightId);
-            ViewBag.PlaneId = new SelectList(db.Planes, "PlaneId", "PlaneId", schedule.PlaneId);
+            ViewBag.FlightId = new SelectList(db.Flights.Include(f => f.FromAirport).Include(f => f.ToAirport).OrderBy(f => f.FlightId), "FlightId", "FlightInfoDisplay", schedule.FlightId);
+            ViewBag.PlaneId = new SelectList(db.Planes, "PlaneId", "PlaneInfoDisplay", schedule.PlaneId);
             return View(schedule);
         }
 
