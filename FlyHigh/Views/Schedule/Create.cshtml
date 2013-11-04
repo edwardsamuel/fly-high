@@ -15,7 +15,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.FlightId, "Flight", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
+            <div class="col-md-4">
                 @Html.DropDownList("FlightId", null, new { @class = "form-control input-sm" })
                 @Html.ValidationMessageFor(model => model.FlightId)
             </div>
@@ -23,7 +23,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Date, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
+            <div class="col-md-4">
                 @Html.TextBoxFor(model => model.Date, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Date)
             </div>
@@ -31,14 +31,14 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.PlaneId, "Plane", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
+            <div class="col-md-4">
                 @Html.DropDownList("PlaneId", null, new { @class = "form-control input-sm" })
                 @Html.ValidationMessageFor(model => model.PlaneId)
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-offset-2 col-md-4">
                 <input class="btn btn-success btn-sm" type="submit" value="Create">
                 @Html.ActionLink("Back to List", "Index", "Schedule", new { @class = "btn btn-default btn-sm" })
             </div>

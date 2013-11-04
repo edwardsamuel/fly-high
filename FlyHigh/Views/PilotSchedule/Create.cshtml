@@ -15,20 +15,20 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.ScheduleId, "Schedule", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
+            <div class="col-md-5">
                 @Html.DropDownList("ScheduleId", ViewBag.ScheduleId as SelectList, "Select...", new { @class = "form-control input-sm", onchange = "FetchPilots();" })
             </div>
         </div>
 
         <div class="form-group" data-bind="visible: pilots().length > 0">
             @Html.LabelFor(model => model.Pilot.PilotName, "Pilot Name", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
+            <div class="col-md-5">
                 <select class = "form-control input-sm" id="PilotId" name="PilotId" data-bind="options: pilots, optionsText: 'PilotName', optionsValue: 'PilotId', optionsCaption: 'Select...'"></select>
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-offset-2 col-md-5">
                 <div class="checkbox">
                     @Html.CheckBoxFor(model => model.IsHead)
                     @Html.LabelFor(model => model.IsHead, "Pilot Captain", new { @class = "checkbox" })

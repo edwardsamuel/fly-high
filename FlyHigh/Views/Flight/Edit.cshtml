@@ -15,7 +15,7 @@
         @Html.HiddenFor(model => model.FlightId)
         <div class="form-group">
             @Html.LabelFor(model => model.FromAirportId, "From", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
+            <div class="col-md-4">
                 @Html.DropDownList("FromAirportId", null, new { @class = "form-control input-sm" })
                 @Html.ValidationMessageFor(model => model.FromAirportId)
             </div>
@@ -23,7 +23,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.ToAirportId, "To", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
+            <div class="col-md-4">
                 @Html.DropDownList("ToAirportId", null, new { @class = "form-control input-sm" })
                 @Html.ValidationMessageFor(model => model.ToAirportId)
             </div>
@@ -31,7 +31,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Departure, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
+            <div class="col-md-4">
                 <div class="input-group" id="timepicker">
                     @Html.TextBoxFor(model => model.Departure, new { @class = "form-control" })
                     <span class="input-group-addon glyphicon glyphicon-time"></span>
@@ -42,7 +42,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Duration, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
+            <div class="col-md-4">
                 <div class="input-group">
                     @Html.TextBoxFor(model => model.Duration, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Duration)
@@ -53,7 +53,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.BasePrice, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
+            <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-addon">Rp</span>
                     @Html.TextBoxFor(model => model.BasePrice, new { @class = "form-control" })
@@ -65,7 +65,7 @@
 
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-offset-2 col-md-4">
                 <input class="btn btn-success btn-sm" type="submit" value="Save">
                 @Html.ActionLink("Back to List", "Index", "Flight", new { @class = "btn btn-default btn-sm" })
             </div>
