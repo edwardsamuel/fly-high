@@ -65,7 +65,7 @@ namespace FlyHigh.Controllers
         public ActionResult Create()
         {
             //ViewBag.PilotId = new SelectList(db.Pilots, "PilotId", "PilotName");
-            ViewBag.ScheduleId = new SelectList(db.Schedules, "ScheduleId", "ScheduleId");
+            ViewBag.ScheduleId = new SelectList(db.Schedules.Include(f => f.Flight.FromAirport).Include(f => f.Flight.ToAirport), "ScheduleId", "ScheduleInfoDisplay");
             return View();
         }
 
@@ -98,7 +98,7 @@ namespace FlyHigh.Controllers
                 return HttpNotFound();
             }
             ViewBag.PilotId = new SelectList(db.Pilots, "PilotId", "PilotName", pilotschedule.PilotId);
-            ViewBag.ScheduleId = new SelectList(db.Schedules, "ScheduleId", "ScheduleId", pilotschedule.ScheduleId);
+            ViewBag.ScheduleId = new SelectList(db.Schedules.Include(f => f.Flight.FromAirport).Include(f => f.Flight.ToAirport), "ScheduleId", "ScheduleInfoDisplay", pilotschedule.ScheduleId);
             return View(pilotschedule);
         }
 

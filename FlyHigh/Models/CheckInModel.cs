@@ -19,18 +19,18 @@ namespace FlyHigh.Models
         public List<long> DynamicMultiBoxes { get; set; }
 
         //This Mentains the state of teh DynamicMultiBoxes List
-        public string dChecked(long input)
-        {
-            string ck = "";
-            if (this.DynamicMultiBoxes != null && this.DynamicMultiBoxes.Count > 0)
-            {
-                if (this.DynamicMultiBoxes.Contains(input))
-                {
-                    ck = "checked=\"checked\"";
-                }
-            }
-            return ck;
-        }
+        //public string dChecked(long input)
+        //{
+        //    string ck = "";
+        //    if (this.DynamicMultiBoxes != null && this.DynamicMultiBoxes.Count > 0)
+        //    {
+        //        if (this.DynamicMultiBoxes.Contains(input))
+        //        {
+        //            ck = "checked=\"checked\"";
+        //        }
+        //    }
+        //    return ck;
+        //}
 
         public Booking booking { get; set; }
 
