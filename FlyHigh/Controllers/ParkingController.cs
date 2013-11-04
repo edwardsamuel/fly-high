@@ -25,43 +25,41 @@ namespace FlyHigh.Controllers
         }
 
         //
-        // GET: /Parking/Details?planeId=1&date=2013-12-30
+        // GET: /Parking/Details?start=2013-12-30&end=2013-12-30
 
-        public ActionResult Details(int planeId, DateTime date)
+        public ActionResult Details(DateTime start, DateTime end)
         {
-            var q = from p in db.Schedules
-                    where p.Date > date
-                    select p;
-
-            var scheduleBefore = db.Schedules.Include(s => s.Flight).Include(s => s.Plane).OrderByDescending(p => p.Date).OrderByDescending(p => p.Flight.Departure).FirstOrDefault(p => p.PlaneId == planeId && p.Date < date);
-            var scheduleIn = db.Schedules.Include(s => s.Flight).Include(s => s.Plane).Where(p => p.PlaneId == planeId && p.Date == date).ToList();
-            var scheduleAfter = db.Schedules.Include(s => s.Flight).Include(s => s.Plane).FirstOrDefault(p => p.PlaneId == planeId && p.Date > date);
-            
             List<ParkingModel> parking = new List<ParkingModel>();
 
-            ParkingModel pm = new ParkingModel(scheduleBefore, null);
-            if (scheduleIn.Count > 0)
+            var q = from p in db.Planes select p.PlaneId;
+            foreach (int planeId in q.ToList())
             {
-                pm.Departure = scheduleIn[0];
-                parking.Add(pm);
-
-                for (int i = 0, len = scheduleIn.Count - 1; i < len; i++)
+                var scheduleBefore = db.Schedules.Include(s => s.Flight).Include(s => s.Plane).OrderByDescending(p => p.Date).OrderByDescending(p => p.Flight.Departure).FirstOrDefault(p => p.PlaneId == planeId && p.Date < start);
+                var scheduleIn = db.Schedules.Include(s => s.Flight).Include(s => s.Plane).Where(p => p.PlaneId == planeId && p.Date >= start && p.Date <= end).OrderBy(s => s.Date).ThenBy(s => s.Flight.Departure).ToList();
+                var scheduleAfter = db.Schedules.Include(s => s.Flight).Include(s => s.Plane).FirstOrDefault(p => p.PlaneId == planeId && p.Date > end);
+                
+                ParkingModel pm = new ParkingModel(scheduleBefore, null);
+                if (scheduleIn.Count > 0)
                 {
-                    pm = new ParkingModel(scheduleIn[i], scheduleIn[i + 1]);
+                    pm.Departure = scheduleIn[0];
+                    parking.Add(pm);
+
+                    for (int i = 0, len = scheduleIn.Count - 1; i < len; i++)
+                    {
+                        pm = new ParkingModel(scheduleIn[i], scheduleIn[i + 1]);
+                        parking.Add(pm);
+                    }
+
+                    pm = new ParkingModel(scheduleIn[scheduleIn.Count - 1], scheduleAfter);
                     parking.Add(pm);
                 }
-
-                pm = new ParkingModel(scheduleIn[scheduleIn.Count - 1], scheduleAfter);
-                parking.Add(pm);
+                else
+                {
+                    pm.Departure = scheduleAfter;
+                    parking.Add(pm);
+                }
             }
-            else
-            {
-                pm.Departure = scheduleAfter;
-                parking.Add(pm);
-            }
-
             return View(parking);
         }
-
     }
 }
